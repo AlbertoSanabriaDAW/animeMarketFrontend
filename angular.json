@@ -94,6 +94,95 @@
           }
         }
       }
+    },
+    "terminos-condiciones": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/terminos-condiciones",
+      "sourceRoot": "projects/terminos-condiciones/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/terminos-condiciones",
+            "index": "projects/terminos-condiciones/src/index.html",
+            "browser": "projects/terminos-condiciones/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/terminos-condiciones/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/terminos-condiciones/public"
+              }
+            ],
+            "styles": [
+              "projects/terminos-condiciones/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "terminos-condiciones:build:production"
+            },
+            "development": {
+              "buildTarget": "terminos-condiciones:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/terminos-condiciones/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/terminos-condiciones/public"
+              }
+            ],
+            "styles": [
+              "projects/terminos-condiciones/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   }
 }

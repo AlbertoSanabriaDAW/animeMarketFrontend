@@ -7,6 +7,14 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutAnimeMarketComponent } from './about-anime-market/about-anime-market.component';
 import { RegistroSesionComponent } from './registro-sesion/registro-sesion.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
+import {TerminosCondicionesComponent} from './terminos-condiciones/terminos-condiciones.component';
+import {PoliticaPrivacidadComponent} from './politica-privacidad/politica-privacidad.component';
+import {ContactoComponent} from './contacto/contacto.component';
+import {TematicaBoboboComponent} from './tematica-bobobo/tematica-bobobo.component';
+import {TematicaDoraemonComponent} from './tematica-doraemon/tematica-doraemon.component';
+import {TematicaDragonBallComponent} from './tematica-dragon-ball/tematica-dragon-ball.component';
+import {TematicaKimetsuComponent} from './tematica-kimetsu/tematica-kimetsu.component';
+import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +27,16 @@ import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.componen
     FooterComponent,
     AboutAnimeMarketComponent,
     RegistroSesionComponent,
-    IniciarSesionComponent
+    IniciarSesionComponent,
+    TerminosCondicionesComponent,
+    PoliticaPrivacidadComponent,
+    ContactoComponent,
+    TematicaBoboboComponent,
+    TematicaDoraemonComponent,
+    TematicaDragonBallComponent,
+    TematicaKimetsuComponent,
+    TematicaPokemonComponent,
+
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
