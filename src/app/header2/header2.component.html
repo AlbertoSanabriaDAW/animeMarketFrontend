@@ -1,0 +1,40 @@
+<header class="flex flex-col bg-gray-900 text-white p-4">
+  <div class="flex items-center justify-between">
+    <!-- Logo and Title -->
+    <div class="logo-title flex items-center">
+      <img src="/logoAnimeMarket.png" alt="Logo" class="h-12 w-12 mr-2">
+      <h1 class="text-2xl font-bold text-red-700">AnimeMarket: Tu Tienda Anime Online</h1>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar mx-4 w-80">
+      <input type="text" placeholder="Busca aquí tu producto" class="w-full p-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-red-700">
+    </div>
+
+    <!-- User and Cart -->
+    <div class="user-section flex items-center space-x-4">
+      <div class="flex items-center cursor-pointer user-login">
+        <img src="/ImMonigoteSesion.png" alt="User Icon" class="h-6 w-6 mr-1">
+        <span (click)="login()">Inicia Sesión</span> /
+        <span (click)="register()">Regístrate</span>
+      </div>
+
+      <div class="flex items-center cursor-pointer user-cart" (click)="viewCart()">
+        <img src="/ImCarroEmoji.png" alt="Cart Icon" class="h-6 w-6 mr-1">
+        <span>Carrito</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Selector -->
+  <div class="category-selector">
+    <select class="p-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-700" (change)="onCategoryChange($event)">
+      <option>Todas las temáticas</option>
+      <option>Temática: Bobobo</option>
+      <option>Temática: Pokemon</option>
+      <option>Temática: Kimetsu no Yaiba</option>
+      <option>Temática: Doraemon</option>
+      <option>Temática: Dragon Ball</option>
+    </select>
+  </div>
+</header>

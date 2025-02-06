@@ -1,0 +1,71 @@
+<section class="bg-gray-900 text-white py-10 px-6">
+  <form class="w-full max-w-lg mx-auto bg-red-900 p-8 rounded-lg shadow-lg mt-10 mb-10">
+    <h2 class="text-white text-2xl font-bold text-center mb-6">¡Regístrate en animeMarket!</h2>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Nick</label>
+        <input type="text" formControlName="nick"
+               class="appearance-none block w-full bg-gray-300 text-black border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+        <p class="text-red-500 text-xs italic">Este campo es obligatorio.</p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Correo</label>
+        <input type="email" formControlName="correo"
+               class="appearance-none block w-full bg-gray-300 text-black border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Contraseña</label>
+        <input type="password" formControlName="contrasenia"
+               class="appearance-none block w-full bg-gray-300 text-black border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Repetir Contraseña</label>
+        <input type="password" formControlName="repetirContrasenia"
+               class="appearance-none block w-full bg-gray-300 text-black border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Info de Perfil</label>
+        <textarea formControlName="perfil"
+                  class="appearance-none block w-full bg-gray-300 text-black border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Foto (URL)</label>
+        <input type="url" formControlName="foto"
+               class="appearance-none block w-full bg-gray-300 text-black border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2">Rol</label>
+        <input type="text" formControlName="rol" value="0"
+               class="appearance-none block w-full bg-gray-500 text-black border border-gray-400 rounded py-3 px-4 leading-tight cursor-not-allowed"
+               readonly>
+      </div>
+    </div>
+
+    <button type="submit"
+            class="w-full bg-black text-white py-3 px-4 rounded-lg font-bold hover:bg-gray-800 transition duration-300">Registrarse</button>
+
+    <p class="text-center text-white mt-4">
+      ¿Ya tienes cuenta?
+      <a (click)="irAIniciarSesion()" class="text-blue-400 hover:text-blue-600 cursor-pointer">Inicia Sesión</a>
+    </p>
+  </form>
+</section>

@@ -1,0 +1,109 @@
+/* General Header Styles */
+header {
+  background-color: #1f2937; /* Gray-900 */
+  color: white;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+/* Flex Container for Top Section */
+header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo and Title */
+.logo-title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-start; /* Aligns logo to the left */
+}
+
+header img {
+  height: 3rem;
+  width: 3rem;
+}
+
+/*header img {*/
+/*  height: auto;*/
+/*  max-height: 3rem;*/
+/*  width: auto;*/
+/*  max-width: 3rem;*/
+/*  display: block; !* Asegura que la imagen ocupe su propio espacio *!*/
+/*}*/
+
+header h1 {
+  color: #b91c1c; /* Dark Red */
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+/* Search Bar */
+.search-bar {
+  flex: 2;
+  display: flex;
+  justify-content: center; /* Centers the search bar */
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 300px; /* Limita el ancho de la barra de búsqueda */
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #b91c1c; /* Dark Red */
+}
+
+/* User and Cart Section */
+.user-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Aligns user/cart to the right */
+  flex: 1;
+}
+
+.user-cart, .user-login {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.user-cart img, .user-login img {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.25rem;
+}
+
+.user-cart span, .user-login span {
+  cursor: pointer;
+}
+
+/* Category Selector */
+select {
+  width: 100%;
+  max-width: 250px; /* Limita el ancho del selector */
+  padding: 0.5rem;
+  background-color: #374151; /* Gray-800 */
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  outline: none;
+}
+
+select:focus {
+  border: 2px solid #b91c1c; /* Dark Red */
+}
+
+/* Centering the Category Selector */
+.category-selector {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
