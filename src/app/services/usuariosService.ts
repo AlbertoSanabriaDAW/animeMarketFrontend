@@ -20,4 +20,10 @@ export class UsuariosService {
     const usuarioRegistrado = this.http.post<RegistroUsuario>('/usuarios/registro', usuario);
     return usuarioRegistrado;
   }
+
+  loginUsuario(usuario: RegistroUsuario): Observable<RegistroUsuario> {
+    // Aquí se haría una petición HTTP a un servidor
+    const usuarioLogeado = this.http.post<RegistroUsuario>('/api/usuarios/login', usuario);
+    return usuarioLogeado;
+  }
 }

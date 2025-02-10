@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import {UsuariosService} from '../services/usuariosService';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -13,10 +14,10 @@ import { Router } from '@angular/router';
 export class IniciarSesionComponent implements OnInit {
   iniciarSesionForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private usuariosService: UsuariosService) {
     this.iniciarSesionForm = this.fb.group({
       nick: ['', [Validators.required, Validators.minLength(3)]],
-      contrasenia: ['', [Validators.required, Validators.minLength(6)]]
+      contrasenia: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
 
@@ -25,7 +26,10 @@ export class IniciarSesionComponent implements OnInit {
   onSubmit(): void {
     if (this.iniciarSesionForm.valid) {
       console.log('Formulario válido:', this.iniciarSesionForm.value);
-      // Aquí puedes agregar la lógica para autenticar al usuario
+      this.usuariosService.loginUsuario(this.iniciarSesionForm.value).subscribe((usuario) => {
+        console.log('Usuario logeado:', usuario);
+        this.router.navigate(['/']);
+      });
     } else {
       console.log('Formulario inválido');
     }
@@ -34,4 +38,5 @@ export class IniciarSesionComponent implements OnInit {
   irARegistro(): void {
     this.router.navigate(['/registro-sesion']);
   }
+
 }
