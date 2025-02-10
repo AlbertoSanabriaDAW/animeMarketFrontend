@@ -15,8 +15,8 @@ export class RegistroSesionComponent implements OnInit {
     this.registroSesionForm = this.fb.group({
       nick: ['', [Validators.required, Validators.minLength(3)]],
       correo: ['', [Validators.required, Validators.email]],
-      contrasenia: ['', [Validators.required, Validators.minLength(6)]],
-      repetirContrasenia: ['', [Validators.required, Validators.minLength(6)]],
+      contrasenia: ['', [Validators.required, Validators.minLength(4)]],
+      repetirContrasenia: ['', [Validators.required, Validators.minLength(4)]],
       perfil: [''],
       foto: [''],
       rol: ['0']
