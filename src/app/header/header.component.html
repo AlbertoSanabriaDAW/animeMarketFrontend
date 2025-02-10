@@ -16,6 +16,9 @@
       <p>{{usuario.nick}}</p>
     </div>
 
+    <div *ngFor="let tematica of tematicas" class="bg-red-500 p-5">
+      <p>{{tematica.nombre}}</p>
+
     <!-- User and Cart -->
     <div class="user-section flex items-center space-x-4">
       <div class="flex items-center cursor-pointer user-login" (click)="login()">

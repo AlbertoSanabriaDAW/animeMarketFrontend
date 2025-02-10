@@ -1,15 +1,27 @@
 import {Injectable} from '@angular/core';
 import * as http from 'node:http';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-class TematicaService {
+// class TematicaService {
+//   constructor(private http: HttpClient) {
+//   }
+//   getTematicas(): object[] {
+//     // Aquí se haría una petición HTTP a un servidor
+//     const tematicas = this.http.get<object[]>('http://localhost:3000/tematicas');
+//   }
+// }
+
+export class TematicaService {
   constructor(private http: HttpClient) {
   }
-  getTematicas(): object[] {
+
+  getTematicas(): Observable<any[]> {
     // Aquí se haría una petición HTTP a un servidor
-    const tematicas = this.http.get<object[]>('http://localhost:3000/tematicas');
+    const tematicas = this.http.get<any[]>('/tematicas/all');
+    return tematicas;
   }
 }

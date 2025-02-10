@@ -11,6 +11,7 @@ import {TematicaDoraemonComponent} from './tematica-doraemon/tematica-doraemon.c
 import {TematicaDragonBallComponent} from './tematica-dragon-ball/tematica-dragon-ball.component';
 import {TematicaKimetsuComponent} from './tematica-kimetsu/tematica-kimetsu.component';
 import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.component';
+// import {ProductosComponent} from './productos/productos.component';
 
 export const routes: Routes = [
   { path: '', component: PaginaPrincipalComponent, pathMatch: 'full' },
@@ -25,5 +26,6 @@ export const routes: Routes = [
   { path: 'tematica-dragon-ball', component: TematicaDragonBallComponent},
   { path: 'tematica-kimetsu', component: TematicaKimetsuComponent},
   { path: 'tematica-pokemon', component: TematicaPokemonComponent},
+  // { path: 'productos', component: ProductosComponent},
   { path: '**', redirectTo: '' }  // Redirige rutas no encontradas a la página principal
 ];

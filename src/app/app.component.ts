@@ -15,6 +15,7 @@ import {TematicaDoraemonComponent} from './tematica-doraemon/tematica-doraemon.c
 import {TematicaDragonBallComponent} from './tematica-dragon-ball/tematica-dragon-ball.component';
 import {TematicaKimetsuComponent} from './tematica-kimetsu/tematica-kimetsu.component';
 import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.component';
+// import {ProductosComponent} from './productos/productos.component';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,7 @@ import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.comp
     TematicaDragonBallComponent,
     TematicaKimetsuComponent,
     TematicaPokemonComponent,
+    // ProductosComponent,
 
   ],
   templateUrl: './app.component.html',

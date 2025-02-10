@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {RegistroUsuario} from '../modelos/usuario.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,13 @@ export class UsuariosService {
   }
   getUsuarios(): Observable<any[]> {
     // Aquí se haría una petición HTTP a un servidor
-    const usuarios = this.http.get<any[]>('/api/usuarios/all');
+    const usuarios = this.http.get<any[]>('/usuarios/all');
     return usuarios;
+  }
+
+  registroUsuario(usuario: RegistroUsuario): Observable<RegistroUsuario> {
+    // Aquí se haría una petición HTTP a un servidor
+    const usuarioRegistrado = this.http.post<RegistroUsuario>('/usuarios/registro', usuario);
+    return usuarioRegistrado;
   }
 }
