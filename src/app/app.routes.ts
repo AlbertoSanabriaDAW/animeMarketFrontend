@@ -24,7 +24,7 @@ export const routes: Routes = [
   { path: 'tematica-bobobo', component: TematicaBoboboComponent},
   { path: 'tematica-doraemon', component: TematicaDoraemonComponent},
   { path: 'tematica-dragon-ball', component: TematicaDragonBallComponent},
-  { path: 'tematica-kimetsu', component: TematicaKimetsuComponent},
+  { path: 'tematica-kimetsu-no-yaiba', component: TematicaKimetsuComponent},
   { path: 'tematica-pokemon', component: TematicaPokemonComponent},
   // { path: 'productos', component: ProductosComponent},
   { path: '**', redirectTo: '' }  // Redirige rutas no encontradas a la página principal

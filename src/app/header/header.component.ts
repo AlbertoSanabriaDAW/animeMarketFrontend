@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {UsuariosService} from '../services/usuariosService';
 import {NgForOf} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,9 @@ import {NgForOf} from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  private router = inject(Router);
+
   constructor(private usuariosService: UsuariosService) {
   }
   categories: string[] = [
@@ -33,6 +37,7 @@ export class HeaderComponent implements OnInit {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedCategory = selectElement.value;
     console.log('Categoría seleccionada:', this.selectedCategory);
+    this.router.navigate([`/tematica-${this.selectedCategory.toLowerCase().replace(' ', '-')}`]);
   }
 
   onSearch(event: Event): void {

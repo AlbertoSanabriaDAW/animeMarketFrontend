@@ -27,14 +27,11 @@
   </div>
 
   <!-- Category Selector -->
-  <div class="category-selector">
-    <select class="p-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-red-700" (change)="onCategoryChange($event)">
-      <option>Todas las temáticas</option>
-      <option>Temática: Bobobo</option>
-      <option>Temática: Pokemon</option>
-      <option>Temática: Kimetsu no Yaiba</option>
-      <option>Temática: Doraemon</option>
-      <option>Temática: Dragon Ball</option>
-    </select>
+  <div class="flex flex-row justify-around">
+    <a routerLink="/tematica-bobobo" class="text-white">Bobobo</a>
+    <a routerLink="/tematica-pokemon" class="text-white">Pokemon</a>
+    <a routerLink="/tematica-kimetsu-no-yaiba" class="text-white">Kimetsu no Yaiba</a>
+    <a routerLink="/tematica-doraemon" class="text-white">Doraemon</a>
+    <a routerLink="/tematica-dragon-ball" class="text-white">Dragon Ball</a>
   </div>
 </header>
