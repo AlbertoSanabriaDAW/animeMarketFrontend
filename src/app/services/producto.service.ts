@@ -33,7 +33,7 @@ export class ProductoService {
   }
 
   getProductosKimetsu(): Observable<ProductoModelo[]> {
-    return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/kimetsu-no-yaiba`);
+    return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/kimetsu`);
   }
 
 
