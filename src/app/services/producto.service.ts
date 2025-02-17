@@ -17,6 +17,6 @@ export class ProductoService {
   }
 
   getProductosBobobo(): Observable<ProductoModelo[]> {
-    return this.http.get<ProductoModelo[]>(`${this.apiUrl}/bobobo`);
+    return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/bobobo`);
   }
 }
