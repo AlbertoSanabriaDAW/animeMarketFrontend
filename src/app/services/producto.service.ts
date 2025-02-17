@@ -8,12 +8,12 @@ import {ProductoModelo} from '../modelos/producto.modelo';
 })
 export class ProductoService {
 
-  private apiUrl = 'http://localhost:8000/productos';
+  private apiUrl = '/api';
 
   constructor(private http: HttpClient) {}
 
   getProductos(): Observable<ProductoModelo[]> {
-    return this.http.get<ProductoModelo[]>(`${this.apiUrl}/all`);
+    return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/all`);
   }
 
   getProductosBobobo(): Observable<ProductoModelo[]> {
