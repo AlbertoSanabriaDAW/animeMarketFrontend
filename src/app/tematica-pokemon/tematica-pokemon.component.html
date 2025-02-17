@@ -1,1 +1,39 @@
-<p>tematica-pokemon works!</p>
+<head>
+  <title>Carousel/Slideshow</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      background-color: white;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+  </style>
+
+</head>
+<body class="bg-[url('/fondoPaginaAnime1.jpg')] bg-no-repeat bg-fixed w-full">
+<div class="flex flex-row flex-wrap gap-10 p-10 w-full">
+  <div *ngFor="let producto of productos" class="card w-72">
+    <img src="{{producto.imagen}}" class="card-img-top" alt="...">
+    <div class="card-body p-4">
+      <h5 class="card-title text-lg font-bold">{{ producto.nombre }}</h5>
+      <p class="card-text text-gray-700">{{ producto.descripcion }}</p>
+      <p class="card-text text-gray-900 font-semibold">{{ producto.precio }} €</p>
+      <button (click)="anyadirAlCarrito(producto)" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded">
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
+</div>
+</body>
+<p>tematica-kimetsu works!</p>
