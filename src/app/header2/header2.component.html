@@ -31,10 +31,25 @@
 
   <!-- Selector de Categorías -->
   <div class="flex flex-row justify-around">
-    <a [routerLink]="['/tematica-bobobo']" class="text-white">Bobobo</a>
-    <a [routerLink]="['/tematica-pokemon']" class="text-white">Pokemon</a>
-    <a [routerLink]="['/tematica-kimetsu-no-yaiba']" class="text-white">Kimetsu no Yaiba</a>
-    <a [routerLink]="['/tematica-doraemon']" class="text-white">Doraemon</a>
-    <a [routerLink]="['/tematica-dragon-ball']" class="text-white">Dragon Ball</a>
+    <div class="flex items-center">
+      <img src="/Emoji-Bobobo.png" alt="Logo" class="h-12 w-12 mr-2">
+      <a [routerLink]="['/tematica-bobobo']" class="text-white">Bobobo</a>
+    </div>
+    <div class="flex items-center">
+      <img src="/Emoji-Pokemon.png" alt="Logo" class="h-12 w-12 mr-2">
+      <a [routerLink]="['/tematica-pokemon']" class="text-white">Pokemon</a>
+    </div>
+    <div class="flex items-center">
+      <img src="/Emoji-Kimetsu.png" alt="Logo" class="h-12 w-12 mr-2">
+      <a [routerLink]="['/tematica-kimetsu-no-yaiba']" class="text-white">Kimetsu no Yaiba</a>
+    </div>
+    <div class="flex items-center">
+      <img src="/Emoji-Doraemon.png" alt="Logo" class="h-12 w-12 mr-2">
+      <a [routerLink]="['/tematica-doraemon']" class="text-white">Doraemon</a>
+    </div>
+    <div class="flex items-center">
+      <img src="/Emoji-Dragonball.png" alt="Logo" class="h-12 w-12 mr-2">
+      <a [routerLink]="['/tematica-dragon-ball']" class="text-white">Dragon Ball</a>
+    </div>
   </div>
 </header>
