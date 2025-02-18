@@ -13,6 +13,9 @@
         <input type="text" formControlName="nick"
                class="appearance-none block w-full bg-gray-300 text-black border border-red-500
                       rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+        <p class="text-red-400 text-xs italic" *ngIf="iniciarSesionForm.get('nick')?.invalid && iniciarSesionForm.get('nick')?.touched">
+          Nick es requerido (mínimo 3 caracteres).
+        </p>
       </div>
     </div>
 
@@ -24,14 +27,21 @@
         <input type="password" formControlName="contrasenia"
                class="appearance-none block w-full bg-gray-300 text-black border border-gray-300
                       rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+        <p class="text-red-400 text-xs italic" *ngIf="iniciarSesionForm.get('contrasenia')?.invalid && iniciarSesionForm.get('contrasenia')?.touched">
+          Contraseña requerida (mínimo 6 caracteres).
+        </p>
       </div>
     </div>
 
     <button type="submit"
-            (click)="onSubmit()"
-            class="w-full bg-black text-white py-3 px-4 rounded-lg font-bold hover:bg-gray-800 transition duration-300">
+            class="w-full bg-black text-white py-3 px-4 rounded-lg font-bold hover:bg-gray-800 transition duration-300"
+            [disabled]="iniciarSesionForm.invalid">
       Iniciar Sesión
     </button>
+
+    <p *ngIf="errorMensaje" class="text-center text-red-400 mt-4">
+      {{ errorMensaje }}
+    </p>
 
     <p class="text-center text-white mt-4">
       ¿No tienes usuario?

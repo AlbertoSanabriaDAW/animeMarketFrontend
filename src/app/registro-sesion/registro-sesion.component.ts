@@ -25,19 +25,19 @@ export class RegistroSesionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(): void {
-    if (this.registroSesionForm.valid) {
-      console.log('Formulario válido:', this.registroSesionForm.value);
-      // Aquí puedes agregar la lógica para registrar al usuario
-      this.usuariosService.registroUsuario(this.registroSesionForm.value).subscribe((usuario) => {
-        console.log('Usuario registrado:', usuario);
-        this.router.navigate(['/iniciar-sesion']);
-      });
-
-    } else {
-      console.log('Formulario inválido');
-    }
-  }
+  // onSubmit(): void {
+  //   if (this.registroSesionForm.valid) {
+  //     console.log('Formulario válido:', this.registroSesionForm.value);
+  //     // Aquí puedes agregar la lógica para registrar al usuario
+  //     this.usuariosService.registroUsuario(this.registroSesionForm.value).subscribe((usuario) => {
+  //       console.log('Usuario registrado:', usuario);
+  //       this.router.navigate(['/iniciar-sesion']);
+  //     });
+  //
+  //   } else {
+  //     console.log('Formulario inválido');
+  //   }
+  // }
 
   irAIniciarSesion(): void {
     this.router.navigate(['/iniciar-sesion']);
