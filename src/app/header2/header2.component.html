@@ -1,22 +1,23 @@
 <header class="flex flex-col bg-gray-900 text-white p-4">
   <div class="flex items-center justify-between">
-    <!-- Logo and Title -->
+    <!-- Logo y Título -->
     <div class="logo-title flex items-center">
       <img src="/logoAnimeMarket.png" alt="Logo" class="h-12 w-12 mr-2">
       <h1 class="text-2xl font-bold text-red-700">AnimeMarket: Tu Tienda Anime Online</h1>
     </div>
 
-<!--    &lt;!&ndash; Search Bar &ndash;&gt;-->
-<!--    <div class="search-bar mx-4 w-80">-->
-<!--      <input type="text" placeholder="Busca aquí tu producto" class="w-full p-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-red-700">-->
-<!--    </div>-->
-
-    <!-- User and Cart -->
+    <!-- Usuario y Carrito -->
     <div class="user-section flex items-center space-x-4">
-      <div class="flex items-center cursor-pointer user-login">
+      <div *ngIf="!isLoggedIn()" class="flex items-center cursor-pointer user-login">
         <img src="/ImMonigoteSesion.png" alt="User Icon" class="h-6 w-6 mr-1">
         <span (click)="login()">Inicia Sesión</span> /
         <span (click)="register()">Regístrate</span>
+      </div>
+
+      <div *ngIf="isLoggedIn()" class="flex items-center cursor-pointer user-info">
+        <img src="/ImMonigoteSesion.png" alt="User Icon" class="h-6 w-6 mr-1">
+        <span>{{ getUsername() }}</span> /
+        <span class="cursor-pointer text-red-500" (click)="logout()">Cerrar Sesión</span>
       </div>
 
       <div class="flex items-center cursor-pointer user-cart" (click)="viewCart()">
@@ -26,12 +27,12 @@
     </div>
   </div>
 
-  <!-- Category Selector -->
+  <!-- Selector de Categorías -->
   <div class="flex flex-row justify-around">
-    <a routerLink="/tematica-bobobo" class="text-white">Bobobo</a>
-    <a routerLink="/tematica-pokemon" class="text-white">Pokemon</a>
-    <a routerLink="/tematica-kimetsu-no-yaiba" class="text-white">Kimetsu no Yaiba</a>
-    <a routerLink="/tematica-doraemon" class="text-white">Doraemon</a>
-    <a routerLink="/tematica-dragon-ball" class="text-white">Dragon Ball</a>
+    <a [routerLink]="['/tematica-bobobo']" class="text-white">Bobobo</a>
+    <a [routerLink]="['/tematica-pokemon']" class="text-white">Pokemon</a>
+    <a [routerLink]="['/tematica-kimetsu-no-yaiba']" class="text-white">Kimetsu no Yaiba</a>
+    <a [routerLink]="['/tematica-doraemon']" class="text-white">Doraemon</a>
+    <a [routerLink]="['/tematica-dragon-ball']" class="text-white">Dragon Ball</a>
   </div>
 </header>
