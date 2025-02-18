@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
+
+
 header {
   background-color: #1f2937;
   color: white;
   padding: 1rem;
   font-family: Arial, sans-serif;
 }
+
+.custom-title {
+  font-family: 'Lavishly Yours', cursive;
+  color: #b91c1c;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
 
 header > div {
   display: flex;
