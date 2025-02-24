@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {ProductoService} from '../services/producto.service';
 import {ProductoModelo} from '../modelos/producto.modelo';
 import {NgForOf} from '@angular/common';
+import {CarritoService} from '../services/carrito.service';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -176,7 +177,7 @@ export class PaginaPrincipalComponent implements OnInit {
     // }
   ];
 
-  constructor(private productosService: ProductoService) {
+  constructor(private productosService: ProductoService, private carritoService: CarritoService) {
   }
 
   ngOnInit() {
@@ -187,7 +188,9 @@ export class PaginaPrincipalComponent implements OnInit {
   }
 
   anyadirAlCarrito(producto: ProductoModelo) {
-    console.log('Añadir al carrito', producto);
+    this.carritoService.aniadirAlCarrito(producto).subscribe(data => {
+      console.log(data);
+    });
   }
 
   productosBobobo(){

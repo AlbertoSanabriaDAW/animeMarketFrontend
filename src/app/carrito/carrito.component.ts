@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CarritoService} from '../services/carrito.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-carrito',
@@ -6,6 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css'
 })
-export class CarritoComponent {
+export class CarritoComponent implements OnInit {
+
+  constructor(private carritoService: CarritoService, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.carritoService.obtenerCarrito(this.authService.getUserId()).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error(error)
+    });
+  }
 
 }

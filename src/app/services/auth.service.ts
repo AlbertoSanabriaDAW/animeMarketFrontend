@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,32 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   private apiUrlLogin = 'api/usuarios/login';
   private apiUrlRegister = 'api/usuarios/register';
+
+  private jwtHelper = new JwtHelperService();
+
   // private apiUrlLogin = 'http://localhost:8000/api/usuarios/login';
   // private apiUrlRegister = 'http://localhost:8000/api/usuarios/register';
 
   constructor(private http: HttpClient) {}
+
+  getUserId(): number | null {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('No hay token en localStorage');
+      return null;
+    }
+
+    try {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      console.log('Token Decodificado:', decodedToken);
+
+      return decodedToken.id || null;
+    } catch (error) {
+      console.error('Error decodificando el token:', error);
+      return null;
+    }
+  }
 
   /**
    * Método para iniciar sesión
