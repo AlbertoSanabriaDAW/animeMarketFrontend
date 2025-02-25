@@ -13,7 +13,7 @@ export class CarritoComponent implements OnInit {
   constructor(private carritoService: CarritoService, private authService: AuthService) {}
 
   ngOnInit() {
-    this.carritoService.obtenerCarrito(this.authService.getUserId()).subscribe({
+    this.carritoService.obtenerCarrito().subscribe({
       next: (response) => console.log(response),
       error: (error) => console.error(error)
     });
