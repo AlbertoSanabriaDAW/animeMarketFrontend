@@ -39,6 +39,6 @@ export class CarritoService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}` // Enviar el token en la cabecera
     });
-    return this.http.get(`/api/carritos/byusuario`, { headers });
+    return this.http.get(`/api/carritoproductos/byusuario`, { headers });
   }
 }
