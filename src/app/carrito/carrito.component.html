@@ -1,1 +1,31 @@
 <p>carrito works!</p>
+<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">
+<div class="p-10 w-full">
+  <table class="w-full border-collapse border border-gray-300 bg-white rounded-lg shadow-lg">
+    <thead>
+    <tr class="bg-gray-200">
+      <th class="border border-gray-300 px-4 py-2">Cantidad</th>
+      <th class="border border-gray-300 px-4 py-2">id</th>
+      <th class="border border-gray-300 px-4 py-2">id_carrito</th>
+      <th class="border border-gray-300 px-4 py-2">id_usuario</th>
+      <th class="border border-gray-300 px-4 py-2">Producto</th>
+      <th class="border border-gray-300 px-4 py-2">Precio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let carrito of carritos" class="hover:bg-gray-100 transition-all">
+      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.cantidad }}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id }}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id_carrito }}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id_producto }}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id_usuario }}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.nombre }}</td>
+      <td class="border border-gray-300 px-4 py-2 text-center font-semibold">{{ carrito.precio }} €</td>
+      <td class="border border-gray-300 px-4 py-2 text-center">
+        <button class="bg-red-500 text-white py-2 px-4 rounded">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
