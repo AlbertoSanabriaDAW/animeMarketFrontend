@@ -4,11 +4,13 @@ import {AuthService} from '../services/auth.service';
 import {NgForOf} from '@angular/common';
 import {PedidoService} from '../services/pedido.service';
 import {CarritoModelo} from '../modelos/carrito.modelo';
+import {ModalPagoComponent} from '../componentes/modal-pago/modal-pago.component';
 
 @Component({
   selector: 'app-carrito',
   imports: [
-    NgForOf
+    NgForOf,
+    ModalPagoComponent
   ],
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css'

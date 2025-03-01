@@ -30,8 +30,9 @@
     </tr>
     </tbody>
   </table>
-  <button (click)="comprar()" class="bg-red-500 text-white py-2 px-4 rounded">
+  <button (click)="modalPago.open()" class="bg-red-500 text-white py-2 px-4 rounded">
   Comprar
 </button>
+  <app-modal-pago #modalPago [carritos]="carritos"></app-modal-pago>
 </div>
 </body>
