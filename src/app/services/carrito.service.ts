@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {CarritoModelo} from '../modelos/carrito.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class CarritoService {
     return this.http.post(`/api/carritoproductos/carrito/agregar`, { id_producto: producto.id }, { headers });
   }
 
-  obtenerCarrito(): Observable<any> {
+  obtenerCarrito(): Observable<CarritoModelo[]> {
     const token = localStorage.getItem('token'); // Obtener el token
 
     if (!token) {
@@ -39,6 +40,6 @@ export class CarritoService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}` // Enviar el token en la cabecera
     });
-    return this.http.get(`/api/carritoproductos/byusuario`, { headers });
+    return this.http.get<CarritoModelo[]>(`/api/carritoproductos/byusuario`, { headers });
   }
 }
