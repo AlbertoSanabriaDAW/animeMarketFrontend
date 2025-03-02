@@ -1,13 +1,16 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
-import {CarritoModelo} from '../../modelos/carrito.modelo';
-import {CarritoService} from '../../services/carrito.service';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { NgForOf, NgIf } from '@angular/common';
+import { CarritoModelo } from '../../modelos/carrito.modelo';
+import { CarritoService } from '../../services/carrito.service';
+import { ModalService } from '../../services/modal.service';
+import {ModalValoracionfinalComponent} from '../modal-valoracionfinal/modal-valoracionfinal.component';
 
 @Component({
   selector: 'app-modal-pago',
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    ModalValoracionfinalComponent
   ],
   templateUrl: './modal-pago.component.html',
   styles: ``
@@ -18,24 +21,22 @@ export class ModalPagoComponent implements OnInit, OnChanges {
   protected total: number = 0;
   isOpen = false;
 
-  constructor(
-    private carritoService: CarritoService
-  ) {}
+  constructor(private carritoService: CarritoService, private modalService: ModalService) {}
 
   ngOnInit() {
-    console.log('ngOnInit ejecutado, carritos:', this.carritos);
+    console.log('✅ ModalPagoComponent inicializado');
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['carritos'] && this.carritos) {
-      console.log('ngOnChanges detectó cambios en carritos:', this.carritos);
+      console.log('📌 Cambios detectados en carritos:', this.carritos);
       this.calcularTotal();
     }
   }
 
   calcularTotal(): void {
     this.total = this.carritos.reduce((acc, carrito) => acc + carrito.precio * carrito.cantidad, 0);
-    console.log('Total calculado:', this.total);
+    console.log('🟢 Total calculado:', this.total);
   }
 
   open() {
@@ -46,28 +47,38 @@ export class ModalPagoComponent implements OnInit, OnChanges {
     this.isOpen = false;
   }
 
-  redigirAInicio() {
-    window.location.href = '/';
-  }
-
   comprar() {
+    console.log('🟢 Botón "Comprar" presionado');
+
     this.carritoService.limpiarCarrito().subscribe(
       () => {
-        console.log('Carrito limpiado con éxito');
+        console.log('✅ Carrito limpiado con éxito');
         this.carritos = [];
         this.total = 0;
-        this.redigirAInicio();
+
+        setTimeout(() => {
+          console.log('📌 FORZANDO apertura del modal de valoración');
+
+          // 🔥 Llamamos al modal usando window directamente
+          (window as any).abrirModalValoracion();
+        }, 200);
       },
       (error) => {
-        console.error('Error al limpiar el carrito', error);
+        console.error('❌ Error al limpiar el carrito', error);
       }
     );
   }
+
+
 }
+
+
+
 
 // import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 // import {NgForOf, NgIf} from '@angular/common';
 // import {CarritoModelo} from '../../modelos/carrito.modelo';
+// import {CarritoService} from '../../services/carrito.service';
 //
 // @Component({
 //   selector: 'app-modal-pago',
@@ -83,6 +94,10 @@ export class ModalPagoComponent implements OnInit, OnChanges {
 //   @Input() carritos!: CarritoModelo[];
 //   protected total: number = 0;
 //   isOpen = false;
+//
+//   constructor(
+//     private carritoService: CarritoService
+//   ) {}
 //
 //   ngOnInit() {
 //     console.log('ngOnInit ejecutado, carritos:', this.carritos);
@@ -113,7 +128,16 @@ export class ModalPagoComponent implements OnInit, OnChanges {
 //   }
 //
 //   comprar() {
-//     window.alert("Compra realizada con éxito");
-//     this.redigirAInicio();
+//     this.carritoService.limpiarCarrito().subscribe(
+//       () => {
+//         console.log('Carrito limpiado con éxito');
+//         this.carritos = [];
+//         this.total = 0;
+//         this.redigirAInicio();
+//       },
+//       (error) => {
+//         console.error('Error al limpiar el carrito', error);
+//       }
+//     );
 //   }
 // }

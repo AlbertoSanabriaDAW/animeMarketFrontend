@@ -15,6 +15,8 @@ import {TematicaDoraemonComponent} from './tematica-doraemon/tematica-doraemon.c
 import {TematicaDragonBallComponent} from './tematica-dragon-ball/tematica-dragon-ball.component';
 import {TematicaKimetsuComponent} from './tematica-kimetsu/tematica-kimetsu.component';
 import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.component';
+import {ModalValoracionfinalComponent} from './componentes/modal-valoracionfinal/modal-valoracionfinal.component';
+
 // import {ProductosComponent} from './productos/productos.component';
 
 @Component({
@@ -37,6 +39,7 @@ import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.comp
     TematicaDragonBallComponent,
     TematicaKimetsuComponent,
     TematicaPokemonComponent,
+    ModalValoracionfinalComponent
     // ProductosComponent,
 
   ],
