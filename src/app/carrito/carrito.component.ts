@@ -40,4 +40,22 @@ export class CarritoComponent implements OnInit {
     });
   }
 
+  eliminarProducto(idProducto: number): void {
+    this.carritoService.eliminarDelCarrito(idProducto).subscribe(
+      response => {
+        console.log(response.mensaje);
+        this.obtenerCarrito(); // Refresca la lista después de eliminar
+      },
+      error => {
+        console.error('Error al eliminar el producto:', error);
+      }
+    );
+  }
+
+  private obtenerCarrito() {
+    this.carritoService.obtenerCarrito().subscribe(data => {
+      this.carritos = data;
+      console.log(data);
+    });
+  }
 }
