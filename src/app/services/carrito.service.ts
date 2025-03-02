@@ -57,4 +57,20 @@ export class CarritoService {
 
     return this.http.delete(`/api/carritoproductos/carrito/eliminar/${idProducto}`, { headers });
   }
+
+  limpiarCarrito() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No hay token en localStorage');
+      return new Observable(observer => observer.error('No autenticado'));
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete(`/api/carritoproductos/carrito/limpiar`, { headers  });
+
+  }
 }

@@ -38,7 +38,7 @@ export class CarritoComponent implements OnInit {
     this.pedidoService.comprar(this.carritos[0].id_carrito).subscribe((data: any) => {
       console.log(this.carritos[0].id_carrito);
     });
-  }
+  } // no se esta utilizando
 
   eliminarProducto(idProducto: number): void {
     this.carritoService.eliminarDelCarrito(idProducto).subscribe(
