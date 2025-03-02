@@ -45,6 +45,10 @@ export class ModalPagoComponent implements OnInit, OnChanges {
     window.location.href = '/';
   }
 
+  comprar() {
+    window.alert("Compra realizada con éxito");
+    this.redigirAInicio();
+  }
 }
 
 // import {Component, Input, OnInit} from '@angular/core';
