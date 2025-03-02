@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {ProductoModelo} from '../modelos/producto.modelo';
 import {ProductoService} from '../services/producto.service';
+import {CarritoService} from '../services/carrito.service';
 
 @Component({
   selector: 'app-tematica-kimetsu',
@@ -14,9 +15,9 @@ import {ProductoService} from '../services/producto.service';
 export class TematicaKimetsuComponent implements OnInit {
 
   protected productos: ProductoModelo[] = [
-
   ];
-  constructor(private productosService: ProductoService) {
+
+  constructor(private productosService: ProductoService, private carritoService: CarritoService) {
   }
 
   ngOnInit() {
@@ -26,8 +27,10 @@ export class TematicaKimetsuComponent implements OnInit {
     });
   }
 
-  anyadirAlCarrito(producto: ProductoModelo): void {
-    console.log('Añadiendo al carrito:', producto);
+  anyadirAlCarrito(producto: ProductoModelo) {
+    this.carritoService.aniadirAlCarrito(producto).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }
