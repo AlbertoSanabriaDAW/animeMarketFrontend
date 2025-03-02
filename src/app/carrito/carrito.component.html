@@ -35,9 +35,12 @@
     </tr>
     </tbody>
   </table>
-  <button (click)="modalPago.open()" class="bg-red-500 text-white py-2 px-4 rounded">
-  Comprar
-</button>
+  <br>
+  <div class="flex justify-center">
+    <button (click)="modalPago.open()" class="bg-yellow-200 text-black py-4 px-8 rounded-lg text-xl font-bold">
+      Comprar
+    </button>
+  </div>
   <app-modal-pago #modalPago [carritos]="carritos"></app-modal-pago>
 </div>
 </body>
