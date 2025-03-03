@@ -22,16 +22,17 @@
 
 </head>
 <body class="bg-[url('/fondoKimetsu.png')] bg-no-repeat bg-fixed w-full">
-<div class="flex flex-row flex-wrap gap-10 p-10 w-full">
-  <div *ngFor="let producto of productos" class="card w-72">
-    <img src="{{producto.imagen}}" class="card-img-top" alt="...">
-    <div class="card-body p-4">
-      <h5 class="card-title text-lg font-bold">{{ producto.nombre }}</h5>
-      <p class="card-text text-gray-700">{{ producto.descripcion }}</p>
-      <p class="card-text text-gray-900 font-semibold">{{ producto.precio }} €</p>
-      <button (click)="anyadirAlCarrito(producto)" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded">
-        Añadir al carrito
-      </button>
+
+<div style="padding-bottom:100px;">
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-10 p-10 w-full">
+    <div *ngFor="let producto of productos" class=" h-full grid hover:scale-105 transition-all w-full bg-white rounded-lg shadow-lg">
+      <img src="{{producto.imagen}}" class="card-img-top" alt="...">
+      <div class=" p-4 flex flex-col justify-between h-full">
+        <h5 class=" text-lg font-bold">{{ producto.nombre }}</h5>
+        <p class=" text-gray-700">{{ producto.descripcion }}</p>
+        <p class=" text-gray-900 font-semibold">{{ producto.precio }} €</p>
+        <button (click)="anyadirAlCarrito(producto)" class="btn btn-info bg-blue-500 text-white py-2 px-4 rounded">Añadir al carrito</button>
+      </div>
     </div>
   </div>
 </div>
