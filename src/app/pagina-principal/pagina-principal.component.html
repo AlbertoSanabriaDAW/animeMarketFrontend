@@ -22,6 +22,14 @@
 
 </head>
 <body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">
+<br>
+<img src="/imagenSuperior.png" alt="AnimeMarket" class="w-full">
+<br>
+<div class="flex items-center justify-center w-1/2 h-20 bg-red-900 mx-auto mt-10 rounded-lg">
+  <h1 class="text-white text-2xl font-bold">Productos de nuestra selección</h1>
+</div>
+
+
 <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-10 p-10 w-full">
   <div *ngFor="let producto of productos" class=" h-full grid hover:scale-105 transition-all w-full bg-white rounded-lg shadow-lg">
     <img src="{{producto.imagen}}" class="card-img-top" alt="...">

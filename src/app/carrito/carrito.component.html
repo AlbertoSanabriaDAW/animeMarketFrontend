@@ -37,10 +37,13 @@
   </table>
   <br>
   <div class="flex justify-center">
-    <button (click)="modalPago.open()" class="bg-yellow-200 text-black py-4 px-8 rounded-lg text-xl font-bold">
+    <button (click)="modalPago.open()" class="bg-yellow-300 text-black py-4 px-8 rounded-lg text-xl font-bold">
       Comprar
     </button>
   </div>
   <app-modal-pago #modalPago [carritos]="carritos"></app-modal-pago>
+</div>
+<div style="margin-left: 32%; padding-bottom: 200px;">
+  <img src="/tarjetaImagen.png" alt="tarjeta">
 </div>
 </body>
