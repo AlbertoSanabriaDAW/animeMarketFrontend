@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class PedidoService {
 
-  private apiUrl = '/api';
+  private apiUrl = '/https://animemarketbackend.onrender.com';
 
   constructor(private http: HttpClient) {}
 

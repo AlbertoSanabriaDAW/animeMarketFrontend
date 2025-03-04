@@ -8,7 +8,7 @@ import {ProductoModelo} from '../modelos/producto.modelo';
 })
 export class ProductoService {
 
-  private apiUrl = '/api';
+  private apiUrl = '/https://animemarketbackend.onrender.com';
 
   constructor(private http: HttpClient) {}
 

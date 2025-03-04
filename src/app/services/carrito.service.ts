@@ -8,7 +8,7 @@ import {CarritoModelo} from '../modelos/carrito.modelo';
 })
 export class CarritoService {
 
-  private apiUrl = '/api';
+  private apiUrl = '/https://animemarketbackend.onrender.com';
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class CarritoService {
       'Authorization': `Bearer ${token}` // Enviar el token en la cabecera
     });
 
-    return this.http.post(`/api/carritoproductos/carrito/agregar`, { id_producto: producto.id }, { headers });
+    return this.http.post(`/https://animemarketbackend.onrender.com/carritoproductos/carrito/agregar`, { id_producto: producto.id }, { headers });
   }
 
   obtenerCarrito(): Observable<CarritoModelo[]> {
@@ -40,7 +40,7 @@ export class CarritoService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}` // Enviar el token en la cabecera
     });
-    return this.http.get<CarritoModelo[]>(`/api/carritoproductos/byusuario`, { headers });
+    return this.http.get<CarritoModelo[]>(`/https://animemarketbackend.onrender.com/carritoproductos/byusuario`, { headers });
   }
 
   eliminarDelCarrito(idProducto: number): Observable<any> {
@@ -55,7 +55,7 @@ export class CarritoService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.delete(`/api/carritoproductos/carrito/eliminar/${idProducto}`, { headers });
+    return this.http.delete(`/https://animemarketbackend.onrender.com/carritoproductos/carrito/eliminar/${idProducto}`, { headers });
   }
 
   limpiarCarrito() {
@@ -70,7 +70,7 @@ export class CarritoService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.delete(`/api/carritoproductos/carrito/limpiar`, { headers  });
+    return this.http.delete(`/https://animemarketbackend.onrender.com/carritoproductos/carrito/limpiar`, { headers  });
 
   }
 }

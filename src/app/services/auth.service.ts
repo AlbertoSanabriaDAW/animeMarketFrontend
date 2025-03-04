@@ -8,8 +8,8 @@ import {JwtHelperService} from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrlLogin = 'api/usuarios/login';
-  private apiUrlRegister = 'api/usuarios/register';
+  private apiUrlLogin = 'https://animemarketbackend.onrender.com/usuarios/login';
+  private apiUrlRegister = 'https://animemarketbackend.onrender.com/usuarios/register';
 
   private jwtHelper = new JwtHelperService();
 

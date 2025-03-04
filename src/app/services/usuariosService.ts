@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class UsuariosService {
 
-  private apiUrl = '/api';
+  private apiUrl = '/https://animemarketbackend.onrender.com';
 
   constructor(private http: HttpClient) {
   }
@@ -19,19 +19,5 @@ export class UsuariosService {
     return usuarios;
   }
 
-  // registroUsuario(usuario: RegistroUsuario): Observable<RegistroUsuario> {
-  //   // Aquí se haría una petición HTTP a un servidor
-  //   const usuarioRegistrado = this.http.post<RegistroUsuario>('/usuarios/registro', usuario);
-  //   return usuarioRegistrado;
-  // }
-  //
-  // loginUsuario(usuario: RegistroUsuario): Observable<RegistroUsuario> {
-  //   // Aquí se haría una petición HTTP a un servidor
-  //   const usuarioLogeado = this.http.post<RegistroUsuario>('/usuarios/login', usuario);
-  //   return usuarioLogeado;
-  // }
-  // getProductos(): Observable<ProductoModelo[]> {
-  //   return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/all`);
-  // }
 
 }

@@ -6,14 +6,6 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-// class TematicaService {
-//   constructor(private http: HttpClient) {
-//   }
-//   getTematicas(): object[] {
-//     // Aquí se haría una petición HTTP a un servidor
-//     const tematicas = this.http.get<object[]>('http://localhost:3000/tematicas');
-//   }
-// }
 
 export class TematicaService {
   constructor(private http: HttpClient) {
