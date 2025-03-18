@@ -3,4 +3,13 @@
   <img [src]="producto.imagen" [alt]="producto.nombre" class="img-fluid">
   <p>{{producto.descripcion}}</p>
   <p><strong>Precio:</strong> {{producto.precio}} €</p>
+
+  <div class="cantidad-container">
+    <label for="cantidad"><strong>Cantidad:</strong></label>
+    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" class="form-control">
+  </div>
+
+  <button (click)="anyadirCantidad()" class="btn btn-success mt-3">
+    Añadir al carrito
+  </button>
 </div>
