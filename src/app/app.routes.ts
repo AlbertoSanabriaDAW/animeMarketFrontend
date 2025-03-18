@@ -13,6 +13,7 @@ import {TematicaKimetsuComponent} from './tematica-kimetsu/tematica-kimetsu.comp
 import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.component';
 import {CarritoComponent} from './carrito/carrito.component';
 import {ModalValoracionfinalComponent} from './componentes/modal-valoracionfinal/modal-valoracionfinal.component';
+import {DetallesProductoComponent} from './componentes/detalles-producto/detalles-producto.component';
 // import {ProductosComponent} from './productos/productos.component';
 
 export const routes: Routes = [
@@ -31,5 +32,8 @@ export const routes: Routes = [
   { path: 'carrito', component: CarritoComponent},
   { path: 'valoracion-final', component: ModalValoracionfinalComponent},
   // { path: 'productos', component: ProductosComponent},
-  { path: '**', redirectTo: '' }  // Redirige rutas no encontradas a la página principal
+  { path: '**', redirectTo: '' } , // Redirige rutas no encontradas a la página principal
+  // recuperación a partir de aqui:
+  { path: 'detalles-producto', component: DetallesProductoComponent},
+
 ];

@@ -1,1 +1,6 @@
-<p>detalles-producto works!</p>
+<div class="detalle-producto-container">
+  <h2>{{producto.nombre}}</h2>
+  <img [src]="producto.imagen" [alt]="producto.nombre" class="img-fluid">
+  <p>{{producto.descripcion}}</p>
+  <p><strong>Precio:</strong> {{producto.precio}} €</p>
+</div>

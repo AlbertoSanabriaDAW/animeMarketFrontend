@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductoModelo } from '../../modelos/producto.modelo';
 
 @Component({
   selector: 'app-detalles-producto',
-  imports: [],
   templateUrl: './detalles-producto.component.html',
-  styles: ``
+  styleUrls: ['./detalles-producto.component.css']
 })
-export class DetallesProductoComponent {
+export class DetallesProductoComponent implements OnInit {
+
+  producto: ProductoModelo;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ProductoModelo) {
+    this.producto = data;
+  }
+
+  ngOnInit(): void {
+    console.log('Producto recibido:', this.producto);
+  }
 
 }
