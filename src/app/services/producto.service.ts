@@ -20,6 +20,10 @@ export class ProductoService {
     return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/bobobo`);
   }
 
+  // getProductosBobobo(): Observable<ProductoModelo[]> {
+  //   return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/bobobo?XDEBUG_SESSION_START=14445`);
+  // } ejemplo de como añadir un parametro a la url debug
+
   getProductosDragonball(): Observable<ProductoModelo[]> {
     return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/dragonball`);
   }
