@@ -1,15 +1,65 @@
-<div class="detalle-producto-container">
-  <h2>{{producto.nombre}}</h2>
-  <img [src]="producto.imagen" [alt]="producto.nombre" class="img-fluid">
-  <p>{{producto.descripcion}}</p>
-  <p><strong>Precio:</strong> {{producto.precio}} €</p>
+<div class="detalle-producto-container"
+     style="
+       max-width: 600px;
+       margin: 20px auto;
+       padding: 20px;
+       border: 1px solid #ddd;
+       border-radius: 8px;
+       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+       background-color: #fff;
+     ">
 
-  <div class="cantidad-container">
-    <label for="cantidad"><strong>Cantidad:</strong></label>
-    <input id="cantidad" type="number" [(ngModel)]="cantidad" min="1" class="form-control">
+  <!-- Título centrado -->
+  <h2 style="text-align: center; margin-bottom: 20px;">
+    {{ producto.nombre }}
+  </h2>
+
+  <!-- Imagen centrada y con un borde ligero -->
+  <img
+    [src]="producto.imagen"
+    [alt]="producto.nombre"
+    class="img-fluid"
+    style="
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 5px;
+    "
+  >
+
+  <!-- Descripción y precio -->
+  <p style="margin-top: 10px;">{{ producto.descripcion }}</p>
+  <p><strong>Precio:</strong> {{ producto.precio }} €</p>
+
+  <!-- Contenedor de la cantidad -->
+  <div class="cantidad-container" style="margin-top: 15px;">
+    <label for="cantidad" style="margin-right: 10px;"><strong>Cantidad:</strong></label>
+    <input
+      id="cantidad"
+      type="number"
+      [(ngModel)]="cantidad"
+      min="1"
+      class="form-control d-inline-block"
+      style="width: 80px;"
+    >
   </div>
 
-  <button (click)="anyadirCantidad()" class="btn btn-success mt-3">
+  <!-- Botón más profesional -->
+  <button
+    (click)="anyadirCantidad()"
+    class="btn btn-primary mt-3"
+    style="
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+    "
+  >
     Añadir al carrito
   </button>
+
 </div>
