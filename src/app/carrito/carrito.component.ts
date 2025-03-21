@@ -5,12 +5,14 @@ import {NgForOf} from '@angular/common';
 import {PedidoService} from '../services/pedido.service';
 import {CarritoModelo} from '../modelos/carrito.modelo';
 import {ModalPagoComponent} from '../componentes/modal-pago/modal-pago.component';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-carrito',
   imports: [
     NgForOf,
-    ModalPagoComponent
+    ModalPagoComponent,
+    FormsModule
   ],
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css'
@@ -55,6 +57,28 @@ export class CarritoComponent implements OnInit {
       console.log(data);
       this.calcularTotal(); // Se vuelve a calcular el total con la nueva lista
     });
+  }
+  incrementQuantity(carrito: any) {
+    carrito.cantidad++;
+    this.calculateTotal();
+  }
+
+  decrementQuantity(carrito: any) {
+    if (carrito.cantidad > 1) {
+      carrito.cantidad--;
+      this.calculateTotal();
+    }
+  }
+
+  updateQuantity(carrito: any) {
+    if (carrito.cantidad < 1 || isNaN(carrito.cantidad)) {
+      carrito.cantidad = 1;
+    }
+    this.calculateTotal();
+  }
+
+  calculateTotal() {
+    this.total = this.carritos.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
   }
 
   // Calcula el total sumando (precio * cantidad) de cada item

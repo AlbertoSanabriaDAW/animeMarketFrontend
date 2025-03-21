@@ -3,7 +3,7 @@ import { NgForOf, NgIf } from '@angular/common';
 import { CarritoModelo } from '../../modelos/carrito.modelo';
 import { CarritoService } from '../../services/carrito.service';
 import { ModalService } from '../../services/modal.service';
-import {ModalValoracionfinalComponent} from '../modal-valoracionfinal/modal-valoracionfinal.component';
+import { ModalValoracionfinalComponent } from '../modal-valoracionfinal/modal-valoracionfinal.component';
 
 @Component({
   selector: 'app-modal-pago',
@@ -18,7 +18,6 @@ import {ModalValoracionfinalComponent} from '../modal-valoracionfinal/modal-valo
 export class ModalPagoComponent implements OnInit, OnChanges {
 
   @Input() carritos!: CarritoModelo[];
-  protected total: number = 0;
   isOpen = false;
 
   constructor(private carritoService: CarritoService, private modalService: ModalService) {}
@@ -30,13 +29,11 @@ export class ModalPagoComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['carritos'] && this.carritos) {
       console.log('📌 Cambios detectados en carritos:', this.carritos);
-      this.calcularTotal();
     }
   }
 
-  calcularTotal(): void {
-    this.total = this.carritos.reduce((acc, carrito) => acc + carrito.precio * carrito.cantidad, 0);
-    console.log('🟢 Total calculado:', this.total);
+  get total(): number {
+    return this.carritos?.reduce((acc, carrito) => acc + carrito.precio * carrito.cantidad, 0) || 0;
   }
 
   open() {
@@ -54,12 +51,9 @@ export class ModalPagoComponent implements OnInit, OnChanges {
       () => {
         console.log('✅ Carrito limpiado con éxito');
         this.carritos = [];
-        this.total = 0;
 
         setTimeout(() => {
           console.log('📌 FORZANDO apertura del modal de valoración');
-
-          // 🔥 Llamamos al modal usando window directamente
           (window as any).abrirModalValoracion();
         }, 200);
       },
@@ -68,6 +62,4 @@ export class ModalPagoComponent implements OnInit, OnChanges {
       }
     );
   }
-
-
 }

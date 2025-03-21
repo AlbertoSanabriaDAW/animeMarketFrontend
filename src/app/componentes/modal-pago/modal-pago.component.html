@@ -1,19 +1,18 @@
 <div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-  <div class="bg-white rounded-2xl p-6 w-96 shadow-lg transform transition-all scale-100">
+  <div class="bg-white rounded-2xl p-6 w-96 shadow-lg transform transition-all scale-100 max-h-[80vh] overflow-y-auto">
     <h2 class="text-xl font-bold">Resumen del Carrito</h2>
     <p class="mt-2 text-gray-600">Estás a punto de comprar estos productos de AnimeMarket.</p>
 
-    <div *ngFor="let carrito of carritos">
-      <p>Producto: {{ carrito.nombre }}</p>
-      <p>Cantidad: {{ carrito.cantidad }}</p>
-      <p>Precio: {{ (carrito.precio * carrito.cantidad).toFixed(2)}} €</p>
-      <hr>
+    <div *ngFor="let carrito of carritos" class="my-4">
+      <p><strong>Producto:</strong> {{ carrito.nombre }}</p>
+      <p><strong>Cantidad:</strong> {{ carrito.cantidad }}</p>
+      <p><strong>Precio:</strong> {{ (carrito.precio * carrito.cantidad).toFixed(2) }} €</p>
+      <hr class="my-2">
     </div>
 
     <p><strong>Total: </strong>{{ total.toFixed(2) }} €</p>
 
     <div class="mt-4 flex justify-end">
-
       <button class="px-4 py-2 bg-green-400 text-white rounded-lg hover:bg-green-700 mr-2"
               (click)="comprar()">
         Comprar
@@ -22,10 +21,8 @@
               (click)="close()">
         Cerrar
       </button>
-
     </div>
-
   </div>
 </div>
-<app-modal-valoracionfinal></app-modal-valoracionfinal>
 
+<app-modal-valoracionfinal></app-modal-valoracionfinal>
