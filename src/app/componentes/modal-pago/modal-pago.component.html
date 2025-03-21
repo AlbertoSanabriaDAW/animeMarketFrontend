@@ -6,7 +6,7 @@
     <div *ngFor="let carrito of carritos">
       <p>Producto: {{ carrito.nombre }}</p>
       <p>Cantidad: {{ carrito.cantidad }}</p>
-      <p>Precio: {{ carrito.precio }} €</p>
+      <p>Precio: {{ (carrito.precio * carrito.cantidad).toFixed(2)}} €</p>
       <hr>
     </div>
 
