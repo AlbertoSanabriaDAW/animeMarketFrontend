@@ -49,17 +49,24 @@
 
   <!-- Botón más profesional -->
   <button
-    (click)="anyadirCantidad()"
-    class="btn btn-primary mt-3"
-    style="
-      display: block;
-      margin: 20px auto 0;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 4px;
-    "
+  (click)="anyadirCantidad()"
+  class="btn mt-3"
+  style="
+    display: block;
+    margin: 20px auto 0;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    background-color: #6c757d; /* gris */
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  "
+  onmouseover="this.style.backgroundColor='#dc3545'"
+  onmouseout="this.style.backgroundColor='#6c757d'"
   >
-    Añadir al carrito
+  Añadir al carrito
   </button>
 
 </div>
