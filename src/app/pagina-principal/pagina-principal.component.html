@@ -1,5 +1,5 @@
 <head>
-  <title>Carousel/Slideshow</title>
+  <title>AnimeMarket - Tu Tienda Favorita de Productos Anime</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -7,42 +7,221 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <style>
+    body {
+      background: linear-gradient(to right, #1c1c1c, #3a3a3a);
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
     .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-      background-color: white;
+      border: 1px solid #bb0a1e;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 280px;
+      height: 400px;
+      margin: auto;
     }
 
     .card:hover {
       transform: scale(1.05);
     }
+
+    .titulo {
+      font-size: 36px;
+      font-weight: bold;
+      color: #bb0a1e;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .descripcion {
+      font-size: 18px;
+      color: #dcdcdc;
+      margin-top: 10px;
+    }
+
+    .boton-crear-producto {
+      background-color: #bb0a1e;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .boton-crear-producto:hover {
+      background-color: #a3091a;
+    }
+
+    .btn-ver-detalles {
+      background-color: #bb0a1e;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      color: white;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-ver-detalles:hover {
+      background-color: #a3091a;
+    }
+
+    .card-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    img {
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+      height: 200px;
+      width: 100%;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
   </style>
-
 </head>
-<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">
-<br>
-<img src="/imagenSuperior.png" alt="AnimeMarket" class="w-full">
-<br>
-<div class="flex items-center justify-center w-1/2 h-20 bg-red-900 mx-auto mt-10 rounded-lg">
-  <h1 class="text-white text-2xl font-bold">🎁 Productos de nuestra selección 🎁</h1>
-</div>
 
-<div style="padding-bottom:100px;">
-  <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-10 p-10 w-full">
-    <div *ngFor="let producto of productos" class=" h-full grid hover:scale-105 transition-all w-full bg-white rounded-lg shadow-lg">
-      <img src="{{producto.imagen}}" class="card-img-top" alt="...">
-      <div class=" p-4 flex flex-col justify-between h-full">
-        <h5 class=" text-lg font-bold">{{ producto.nombre }}</h5>
-        <p class=" text-gray-700">{{ producto.descripcion }}</p>
-        <p class=" text-gray-900 font-semibold">{{ producto.precio }} €</p>
-<!--        <button (click)="anyadirAlCarrito(producto)" class="btn btn-danger bg-blue-500 text-white py-2 px-4 rounded">Añadir al carrito</button>-->
-        <button (click)="mostrarDetalles(producto)" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded">
-          Detalles
-        </button>
+<body>
+<div class="container">
+  <!-- Banner principal -->
+  <div class="text-center mt-5 mb-4">
+    <img src="/imagenSuperior.png" alt="AnimeMarket" class="img-fluid rounded shadow">
+  </div>
+
+  <!-- Encabezado de la tienda -->
+  <div class="text-center mb-4">
+    <h1 class="titulo">🎉 ¡Bienvenido a AnimeMarket! 🎉</h1>
+    <p class="descripcion">Tu tienda definitiva de productos de tus animes favoritos: <strong>Bobobo, Kimetsu no Yaiba, Doraemon, Pokémon y Dragon Ball.</strong><br>Encuentra figuras, ropa, peluches, accesorios y mucho más.</p>
+    <button (click)="abrirCrearProducto()" class="boton-crear-producto">Añadir Nuevo Producto</button>
+  </div>
+
+  <app-crear-producto
+    [isOpen]="mostrarCrearProducto"
+    (closeEvent)="cerrarCrearProducto()"
+    (productoCreado)="cargarProductos()">
+  </app-crear-producto>
+
+  <!-- Productos disponibles -->
+  <div class="row">
+    <div *ngFor="let producto of productos" class="col-md-4 mb-4 d-flex justify-content-center">
+      <div class="card">
+        <img [src]="producto.imagen" alt="{{producto.nombre}}">
+        <div class="card-body">
+          <div>
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <p class="card-text">{{ producto.descripcion }}</p>
+            <p class="text-primary font-weight-bold">{{ producto.precio | currency:'EUR' }}</p>
+          </div>
+          <div class="text-center">
+            <button (click)="mostrarDetalles(producto)" class="btn-ver-detalles">Ver Detalles</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 </body>
+
+
+
+
+
+
+<!--FUNCIONA PERO QUIERO MEJORAR ESTILO-->
+<!--<button (click)="abrirCrearProducto()" class="btn btn-primary bg-green-500 text-white py-2 px-4 rounded">Nuevo Producto</button>-->
+
+<!--<app-crear-producto-->
+<!--  [isOpen]="mostrarCrearProducto"-->
+<!--  (closeEvent)="cerrarCrearProducto()"-->
+<!--  (productoCreado)="cargarProductos()">-->
+<!--</app-crear-producto>-->
+
+<!--<div style="padding-bottom:100px;">-->
+<!--  <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-10 p-10 w-full">-->
+<!--    <div *ngFor="let producto of productos" class="h-full grid hover:scale-105 transition-all w-full bg-white rounded-lg shadow-lg">-->
+<!--      <img [src]="producto.imagen" class="card-img-top" alt="...">-->
+<!--      <div class="p-4 flex flex-col justify-between h-full">-->
+<!--        <h5 class="text-lg font-bold">{{ producto.nombre }}</h5>-->
+<!--        <p class="text-gray-700">{{ producto.descripcion }}</p>-->
+<!--        <p class="text-gray-900 font-semibold">{{ producto.precio }} €</p>-->
+<!--        <button (click)="mostrarDetalles(producto)" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded">-->
+<!--          Detalles-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+<!--FUNCIONA 08-04-2025-->
+
+<!--<head>-->
+<!--  <title>Carousel/Slideshow</title>-->
+<!--  <meta charset="utf-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+<!--  <style>-->
+<!--    .card {-->
+<!--      border: 1px solid #ddd;-->
+<!--      border-radius: 8px;-->
+<!--      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);-->
+<!--      transition: transform 0.2s;-->
+<!--      background-color: white;-->
+<!--    }-->
+
+<!--    .card:hover {-->
+<!--      transform: scale(1.05);-->
+<!--    }-->
+<!--  </style>-->
+
+<!--</head>-->
+<!--<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">-->
+<!--<br>-->
+<!--<img src="/imagenSuperior.png" alt="AnimeMarket" class="w-full">-->
+<!--<br>-->
+<!--<div class="flex items-center justify-center w-1/2 h-20 bg-red-900 mx-auto mt-10 rounded-lg">-->
+
+<!--  <h1 class="text-white text-2xl font-bold">🎁 Productos de nuestra selección 🎁</h1>-->
+
+<!--</div>-->
+
+
+
+<!--<div style="padding-bottom:100px;">-->
+<!--  <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-10 p-10 w-full">-->
+<!--    <div *ngFor="let producto of productos" class=" h-full grid hover:scale-105 transition-all w-full bg-white rounded-lg shadow-lg">-->
+<!--      <img src="{{producto.imagen}}" class="card-img-top" alt="...">-->
+<!--      <div class=" p-4 flex flex-col justify-between h-full">-->
+<!--        <h5 class=" text-lg font-bold">{{ producto.nombre }}</h5>-->
+<!--        <p class=" text-gray-700">{{ producto.descripcion }}</p>-->
+<!--        <p class=" text-gray-900 font-semibold">{{ producto.precio }} €</p>-->
+<!--&lt;!&ndash;        <button (click)="anyadirAlCarrito(producto)" class="btn btn-danger bg-blue-500 text-white py-2 px-4 rounded">Añadir al carrito</button>&ndash;&gt;-->
+<!--        <button (click)="mostrarDetalles(producto)" class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded">-->
+<!--          Detalles-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</body>-->

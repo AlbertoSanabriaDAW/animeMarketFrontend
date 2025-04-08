@@ -15,6 +15,7 @@ import {CarritoComponent} from './carrito/carrito.component';
 import {ModalValoracionfinalComponent} from './componentes/modal-valoracionfinal/modal-valoracionfinal.component';
 import {DetallesProductoComponent} from './componentes/detalles-producto/detalles-producto.component';
 import { MiscomprasComponent } from './miscompras/miscompras.component';
+import {CrearProductoComponent} from './componentes/crear-producto/crear-producto.component';
 // import {ProductosComponent} from './productos/productos.component';
 
 export const routes: Routes = [
@@ -39,6 +40,7 @@ export const routes: Routes = [
   // recuperación a partir de aqui:
   { path: 'detalles-producto', component: DetallesProductoComponent},
   { path: 'mis-compras', component: MiscomprasComponent },
+  { path: 'crear-producto', component: CrearProductoComponent },
   { path: '**', redirectTo: '' } , // Redirige rutas no encontradas a la página principal
 
 

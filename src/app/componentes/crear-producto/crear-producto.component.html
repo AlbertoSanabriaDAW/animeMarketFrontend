@@ -1,0 +1,166 @@
+<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-[9999]"
+     role="dialog" aria-modal="true" aria-labelledby="crearProductoTitulo">
+  <div class="bg-black border-2 border-red-700 rounded-2xl p-8 w-96 shadow-2xl transform transition-all scale-100 max-h-[80vh] overflow-y-auto text-white">
+
+    <!-- Título centrado con borde inferior rojo -->
+    <h2 id="crearProductoTitulo" class="text-2xl font-bold mb-6 text-center text-red-600 border-b-2 border-red-700 pb-2">CREAR PRODUCTO</h2>
+
+    <form (ngSubmit)="crearProducto()" novalidate>
+      <!-- Nombre del Producto -->
+      <div class="my-4">
+        <label for="nombre" class="block mb-2 text-gray-400 font-bold">Nombre del Producto:</label>
+        <input id="nombre" type="text" [(ngModel)]="producto.nombre" name="nombre"
+               class="border border-red-700 bg-black text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-red-700 transition-all duration-150" required>
+      </div>
+
+      <!-- Descripción -->
+      <div class="my-4">
+        <label for="descripcion" class="block mb-2 text-gray-400 font-bold">Descripción:</label>
+        <textarea id="descripcion" [(ngModel)]="producto.descripcion" name="descripcion"
+                  class="border border-red-700 bg-black text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-red-700 transition-all duration-150" required></textarea>
+      </div>
+
+      <!-- Precio -->
+      <div class="my-4">
+        <label for="precio" class="block mb-2 text-gray-400 font-bold">Precio (€):</label>
+        <input id="precio" type="number" [(ngModel)]="producto.precio" name="precio"
+               class="border border-red-700 bg-black text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-red-700 transition-all duration-150" required>
+      </div>
+
+      <!-- Imagen URL -->
+      <div class="my-4">
+        <label for="imagen" class="block mb-2 text-gray-400 font-bold">Imagen o URL:</label>
+        <input id="imagen" type="text" [(ngModel)]="producto.imagen" name="imagen"
+               class="border border-red-700 bg-black text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-red-700 transition-all duration-150">
+      </div>
+
+      <!-- ID Temática -->
+      <div class="my-4">
+        <label for="id_tematica" class="block mb-2 text-gray-400 font-bold">ID Temática:</label>
+        <select id="id_tematica" [(ngModel)]="producto.id_tematica" name="id_tematica"
+                class="border border-red-700 bg-black text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-red-700 transition-all duration-150" required>
+          <option value="" disabled>Selecciona un ID Temática</option>
+          <option value="1">1 (Bobobo)</option>
+          <option value="2">2 (Dragon Ball)</option>
+          <option value="3">3 (Doraemon)</option>
+          <option value="4">4 (Kimetsu)</option>
+          <option value="5">5 (Pokemon)</option>
+        </select>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="mt-6 flex justify-center space-x-4">
+        <button type="submit"
+                class="px-6 py-2 bg-red-700 text-white rounded-full hover:bg-red-800 transition-all duration-150 shadow-lg transform hover:scale-105">Crear Producto</button>
+        <button type="button"
+                class="px-6 py-2 bg-gray-800 text-white rounded-full hover:bg-red-800 transition-all duration-150 shadow-lg transform hover:scale-105"
+                (click)="close()">Cerrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!--<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-[9999]">-->
+<!--  <div class="bg-gray-800 rounded-2xl p-6 w-96 shadow-lg transform transition-all scale-100 max-h-[80vh] overflow-y-auto text-white">-->
+<!--    <h2 class="text-xl font-bold mb-4">CREAR PRODUCTO</h2>-->
+
+<!--    <form (ngSubmit)="crearProducto()">-->
+<!--      &lt;!&ndash; Nombre del Producto &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Nombre del Producto:</label>-->
+<!--        <input type="text" [(ngModel)]="producto.nombre" name="nombre" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Descripción &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Descripción:</label>-->
+<!--        <textarea [(ngModel)]="producto.descripcion" name="descripcion" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required></textarea>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Precio &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Precio (€):</label>-->
+<!--        <input type="number" [(ngModel)]="producto.precio" name="precio" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Imagen URL &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Imagen URL:</label>-->
+<!--        <input type="text" [(ngModel)]="producto.imagen" name="imagen" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full">-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; ID Temática &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">ID Temática:</label>-->
+<!--        <select [(ngModel)]="producto.id_tematica" name="id_tematica" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required>-->
+<!--          <option value="" disabled selected>Selecciona un ID Temática</option>-->
+<!--          <option value="1">1 (Bobobo)</option>-->
+<!--          <option value="2">2 (Dragon Ball)</option>-->
+<!--          <option value="3">3 (Doraemon)</option>-->
+<!--          <option value="4">4 (Kimetsu)</option>-->
+<!--          <option value="5">5 (Pokemon)</option>-->
+<!--        </select>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Botones de Acción &ndash;&gt;-->
+<!--      <div class="mt-4 flex justify-end">-->
+<!--        <button type="submit" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 mr-2">Crear Producto</button>-->
+<!--        <button type="button" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600" (click)="close()">Cerrar</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80">-->
+<!--  <div class="bg-gray-800 rounded-2xl p-6 w-96 shadow-lg transform transition-all scale-100 max-h-[80vh] overflow-y-auto text-white">-->
+<!--    <h2 class="text-xl font-bold mb-4">CREAR PRODUCTO </h2>-->
+
+<!--    <form (ngSubmit)="crearProducto()">-->
+<!--      &lt;!&ndash; Nombre del Producto &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Nombre del Producto:</label>-->
+<!--        <input type="text" [(ngModel)]="producto.nombre" name="nombre" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Descripción &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Descripción:</label>-->
+<!--        <textarea [(ngModel)]="producto.descripcion" name="descripcion" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required></textarea>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Precio &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Precio (€):</label>-->
+<!--        <input type="number" [(ngModel)]="producto.precio" name="precio" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Imagen URL &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">Imagen URL:</label>-->
+<!--        <input type="text" [(ngModel)]="producto.imagen" name="imagen" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full">-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; ID Temática &ndash;&gt;-->
+<!--      <div class="my-4">-->
+<!--        <label class="block mb-2 text-gray-300 font-bold">ID Temática:</label>-->
+<!--        <select [(ngModel)]="producto.id_tematica" name="id_tematica" class="border border-gray-600 bg-gray-700 text-white rounded p-2 w-full" required>-->
+<!--          <option value="" disabled selected>Selecciona un ID Temática</option>-->
+<!--          <option value="1">1 (Bobobo)</option>-->
+<!--          <option value="2">2 (Dragon Ball) </option>-->
+<!--          <option value="3">3 (Doraemon) </option>-->
+<!--          <option value="4">4 (Kimetsu) </option>-->
+<!--          <option value="5">5 (Pokemon) </option>-->
+<!--        </select>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Botones de Acción &ndash;&gt;-->
+<!--      <div class="mt-4 flex justify-end">-->
+<!--        <button type="submit" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 mr-2">Crear Producto</button>-->
+<!--        <button type="button" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600" (click)="close()">Cerrar</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
