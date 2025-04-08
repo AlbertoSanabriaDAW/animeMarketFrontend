@@ -1,4 +1,4 @@
-<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+<div *ngIf="mostrarModalPago" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
   <div class="bg-white rounded-2xl p-6 w-96 shadow-lg transform transition-all scale-100 max-h-[80vh] overflow-y-auto">
     <h2 class="text-xl font-bold">Resumen del Carrito</h2>
     <p class="mt-2 text-gray-600">Estás a punto de comprar estos productos de AnimeMarket.</p>
@@ -18,11 +18,9 @@
         Comprar
       </button>
       <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-              (click)="close()">
+              (click)="cerrarModal.emit()">
         Cerrar
       </button>
     </div>
   </div>
 </div>
-
-<app-modal-valoracionfinal></app-modal-valoracionfinal>

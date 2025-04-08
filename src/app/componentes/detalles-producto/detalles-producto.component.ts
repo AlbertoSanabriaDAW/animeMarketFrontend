@@ -53,17 +53,32 @@ export class DetallesProductoComponent implements OnInit {
     return this.http.post(url, body, { headers });
   }
 
+
+
   anyadirCantidad() {
-    this.modificarCantidadCarrito().subscribe({
-      next: (response) => {
-        console.log('✅ Cantidad modificada:', response);
-        alert('Cantidad modificada con éxito en el carrito.');
-      },
-      error: (error) => {
-        console.error('❌ Error al modificar cantidad en el carrito:', error);
-        alert('Error al modificar cantidad en el carrito.');
-      }
-    });
+    const carritoJSON = localStorage.getItem('carrito');
+    let carrito = carritoJSON ? JSON.parse(carritoJSON) : [];
+    // Si el carrito está vacío, inicializarlo como un array vacío
+    // Verificar si el producto ya está en el carrito
+    const index = carrito.findIndex((item: any) => item.id === this.producto.id);
+
+    if (index > -1) {
+      // Producto ya en carrito, actualizamos la cantidad
+      carrito[index].cantidad += this.cantidad;
+    } else {
+      // Producto nuevo, lo añadimos con cantidad
+      const productoConCantidad = {
+        ...this.producto,
+        cantidad: this.cantidad
+      };
+      carrito.push(productoConCantidad);
+    }
+
+    // Guardar el carrito actualizado en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Opcional: Puedes emitir un evento o llamar a un método de servicio para actualizar el icono de carrito o similar
+    console.log('Producto añadido al carrito:', carrito);
   }
 
 }

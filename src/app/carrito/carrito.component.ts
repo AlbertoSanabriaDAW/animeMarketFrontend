@@ -1,33 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { CarritoModelo } from '../modelos/carrito.modelo';
+import {ModalPagoComponent} from '../componentes/modal-pago/modal-pago.component';
 import {FormsModule} from '@angular/forms';
 import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
+  styleUrls: ['./carrito.component.css'],
   imports: [
+    ModalPagoComponent,
     FormsModule,
     NgForOf
-  ],
-  styleUrls: ['./carrito.component.css']
+  ]
 })
 export class CarritoComponent implements OnInit {
-  carritos: any[] = [];
+  carritos: CarritoModelo[] = [];
   total: number = 0;
+  mostrarModalPago = false;
 
   ngOnInit(): void {
     const carritoGuardado = localStorage.getItem('carrito');
     if (carritoGuardado) {
       try {
-        this.carritos = JSON.parse(carritoGuardado);
-
-        // Asegúrate de que cada producto tiene un precio y cantidad válidos
-        this.carritos = this.carritos.map(producto => ({
+        this.carritos = JSON.parse(carritoGuardado).map((producto: any) => ({
           ...producto,
           precio: Number(producto.precio) || 0,
           cantidad: Number(producto.cantidad) || 1
         }));
-
         this.calcularTotal();
       } catch (error) {
         console.error('Error al parsear el carrito:', error);
@@ -35,46 +35,30 @@ export class CarritoComponent implements OnInit {
     }
   }
 
+  abrirModalPago() {
+    this.mostrarModalPago = true;
+  }
+
+  cerrarModalPago() {
+    this.mostrarModalPago = false;
+  }
+
+  manejarCompraExitosa() {
+    this.carritos = [];
+    this.total = 0;
+    localStorage.removeItem('carrito');
+    this.cerrarModalPago();
+  }
+
   calcularTotal(): void {
-    this.total = this.carritos.reduce((acc, producto) => {
-      const precio = Number(producto.precio);
-      const cantidad = Number(producto.cantidad);
-
-      if (isNaN(precio) || isNaN(cantidad)) {
-        console.error(`Producto inválido:`, producto);
-        return acc;
-      }
-
-      return acc + (precio * cantidad);
-    }, 0);
-    this.guardarCarrito();
+    this.total = this.carritos.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    localStorage.setItem('carrito', JSON.stringify(this.carritos));
   }
 
   eliminarProducto(id: number): void {
-    // Filtra el carrito eliminando el producto seleccionado
     this.carritos = this.carritos.filter(item => item.id !== id);
-
-    // Actualiza el carrito en el localStorage
-    localStorage.setItem('carrito', JSON.stringify(this.carritos));
-
-    // Recalcula el total después de la eliminación
     this.calcularTotal();
   }
 
 
-
-  comprar(): void {
-    if (this.carritos.length === 0) {
-      alert("El carrito está vacío.");
-      return;
-    }
-    alert("Compra realizada con éxito.");
-    localStorage.removeItem('carrito');
-    this.carritos = [];
-    this.total = 0;
-  }
-
-  guardarCarrito(): void {
-    localStorage.setItem('carrito', JSON.stringify(this.carritos));
-  }
 }

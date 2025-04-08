@@ -29,6 +29,17 @@
   </div>
 
   <div class="mt-4 text-center">
-    <button (click)="comprar()" class="bg-yellow-500 text-black py-2 px-4 rounded">Comprar</button>
+    <button (click)="abrirModalPago()" class="bg-yellow-500 text-black py-2 px-4 rounded">Comprar</button>
   </div>
+
+  <!-- Incrustar el componente ModalPagoComponent -->
+  <app-modal-pago
+    [carritos]="carritos"
+    [mostrarModalPago]="mostrarModalPago"
+  (cerrarModal)="cerrarModalPago()"
+  (compraExitosa)="manejarCompraExitosa()">
+  </app-modal-pago>
+
+  <button (click)="abrirModalPago()" class="bg-yellow-500 text-black py-2 px-4 rounded">Comprar</button>
+
 </div>

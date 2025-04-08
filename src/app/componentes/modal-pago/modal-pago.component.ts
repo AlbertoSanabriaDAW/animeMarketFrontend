@@ -1,65 +1,40 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CarritoModelo } from '../../modelos/carrito.modelo';
-import { CarritoService } from '../../services/carrito.service';
-import { ModalService } from '../../services/modal.service';
-import { ModalValoracionfinalComponent } from '../modal-valoracionfinal/modal-valoracionfinal.component';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-modal-pago',
-  imports: [
-    NgIf,
-    NgForOf,
-    ModalValoracionfinalComponent
-  ],
   templateUrl: './modal-pago.component.html',
-  styles: ``
+  imports: [
+    NgForOf,
+    NgIf
+  ],
+  styleUrls: ['./modal-pago.component.css']
 })
-export class ModalPagoComponent implements OnInit, OnChanges {
+export class ModalPagoComponent {
 
-  @Input() carritos!: CarritoModelo[];
-  isOpen = false;
+  @Input() carritos: CarritoModelo[] = [];
+  @Input() mostrarModalPago: boolean = false;  // ✅ Declarado como Input correctamente
+  @Output() cerrarModal = new EventEmitter<void>();
+  @Output() compraExitosa = new EventEmitter<void>();
 
-  constructor(private carritoService: CarritoService, private modalService: ModalService, private http: HttpClient) {}
-
-  ngOnInit() {
-    console.log('✅ ModalPagoComponent inicializado');
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['carritos'] && this.carritos) {
-      console.log('📌 Cambios detectados en carritos:', this.carritos);
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   get total(): number {
-    return this.carritos?.reduce((acc, carrito) => acc + carrito.precio * carrito.cantidad, 0) || 0;
-  }
-
-  open() {
-    this.isOpen = true;
-  }
-
-  close() {
-    this.isOpen = false;
+    return this.carritos.reduce((acc, carrito) => acc + carrito.precio * carrito.cantidad, 0);
   }
 
   comprar() {
     console.log('🟢 Botón "Comprar" presionado');
 
     const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    const headers = { 'Authorization': `Bearer ${token}` };
 
-    this.http.delete('/api/carritoproductos/carrito/limpiar', { headers: headers }).subscribe(
+    this.http.delete('/api/carritoproductos/carrito/limpiar', { headers }).subscribe(
       () => {
         console.log('✅ Carrito limpiado con éxito');
-        this.carritos = [];
-
-        setTimeout(() => {
-          console.log('📌 FORZANDO apertura del modal de valoración');
-          (window as any).abrirModalValoracion();
-        }, 200);
+        this.compraExitosa.emit();
       },
       (error) => {
         console.error('❌ Error al limpiar el carrito', error);
