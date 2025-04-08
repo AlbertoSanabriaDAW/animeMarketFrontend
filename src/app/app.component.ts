@@ -16,6 +16,7 @@ import {TematicaDragonBallComponent} from './tematica-dragon-ball/tematica-drago
 import {TematicaKimetsuComponent} from './tematica-kimetsu/tematica-kimetsu.component';
 import {TematicaPokemonComponent} from './tematica-pokemon/tematica-pokemon.component';
 import {ModalValoracionfinalComponent} from './componentes/modal-valoracionfinal/modal-valoracionfinal.component';
+import {MiscomprasComponent} from './miscompras/miscompras.component';
 
 // import {ProductosComponent} from './productos/productos.component';
 
@@ -39,7 +40,8 @@ import {ModalValoracionfinalComponent} from './componentes/modal-valoracionfinal
     TematicaDragonBallComponent,
     TematicaKimetsuComponent,
     TematicaPokemonComponent,
-    ModalValoracionfinalComponent
+    ModalValoracionfinalComponent,
+    MiscomprasComponent,
     // ProductosComponent,
 
   ],

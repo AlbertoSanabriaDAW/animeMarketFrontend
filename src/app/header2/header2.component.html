@@ -8,7 +8,7 @@
       </h1>
     </div>
 
-    <!-- Usuario y Carrito -->
+    <!-- Usuario, Mis compras y Carrito -->
     <div class="user-section flex items-center space-x-4">
       <div *ngIf="!isLoggedIn()" class="flex items-center cursor-pointer user-login">
         <img src="/ImMonigoteSesion.png" alt="User Icon" class="h-6 w-6 mr-1">
@@ -22,11 +22,44 @@
         <span class="cursor-pointer text-red-500" (click)="logout()">Cerrar Sesión</span>
       </div>
 
+      <!-- Mis compras -->
+<!--      <div *ngIf="isLoggedIn()" class="flex items-center cursor-pointer user-purchases" (click)="viewPurchases()">-->
+<!--        <img src="/ImCompras.png" alt="Purchases Icon" class="h-6 w-6 mr-1">-->
+<!--        <span>Mis compras</span>-->
+<!--      </div>-->
+      <a *ngIf="isLoggedIn()" [routerLink]="['/mis-compras']" class="flex items-center cursor-pointer user-purchases">
+        <img src="/ImCompras.png" alt="Purchases Icon" class="h-6 w-6 mr-1">
+        <span>Mis compras</span>
+      </a>
+
+
+      <!-- Carrito -->
       <div class="flex items-center cursor-pointer user-cart" (click)="viewCart()">
         <img src="/ImCarroEmoji.png" alt="Cart Icon" class="h-6 w-6 mr-1">
         <span>Carrito</span>
       </div>
     </div>
+
+
+    <!--    &lt;!&ndash; Usuario y Carrito &ndash;&gt;-->
+<!--    <div class="user-section flex items-center space-x-4">-->
+<!--      <div *ngIf="!isLoggedIn()" class="flex items-center cursor-pointer user-login">-->
+<!--        <img src="/ImMonigoteSesion.png" alt="User Icon" class="h-6 w-6 mr-1">-->
+<!--        <span (click)="login()">Inicia Sesión</span> /-->
+<!--        <span (click)="register()">Regístrate</span>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="isLoggedIn()" class="flex items-center cursor-pointer user-info">-->
+<!--        <img src="/ImMonigoteSesion.png" alt="User Icon" class="h-6 w-6 mr-1">-->
+<!--        <span>{{ getUsername() }}</span> /-->
+<!--        <span class="cursor-pointer text-red-500" (click)="logout()">Cerrar Sesión</span>-->
+<!--      </div>-->
+
+<!--      <div class="flex items-center cursor-pointer user-cart" (click)="viewCart()">-->
+<!--        <img src="/ImCarroEmoji.png" alt="Cart Icon" class="h-6 w-6 mr-1">-->
+<!--        <span>Carrito</span>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
   <br>
 

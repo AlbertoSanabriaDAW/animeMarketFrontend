@@ -61,4 +61,8 @@ export class Header2Component implements OnInit {
     console.log('Categoría seleccionada:', this.selectedCategory);
     this.router.navigate([`/tematica-${this.selectedCategory.toLowerCase().replace(' ', '-')}`]); // Ruta original intacta
   }
+
+  viewPurchases() {
+    this.router.navigate(['/mis-compras']);
+  }
 }
