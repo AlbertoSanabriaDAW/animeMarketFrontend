@@ -1,68 +1,34 @@
-<!--<p>carrito works!</p>-->
-<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">
 <div class="p-10 w-full">
   <table class="w-full border-collapse border border-gray-300 bg-white rounded-lg shadow-lg">
     <thead>
     <tr class="bg-gray-200">
-      <th class="border border-gray-300 px-4 py-2">Cantidad</th>
-<!--      <th class="border border-gray-300 px-4 py-2">id</th>-->
-<!--      <th class="border border-gray-300 px-4 py-2">id_carrito</th>-->
-<!--      <th class="border border-gray-300 px-4 py-2">id_producto</th>-->
-<!--      <th class="border border-gray-300 px-4 py-2">id_usuario</th>-->
-      <th class="border border-gray-300 px-4 py-2">Producto</th>
-      <th class="border border-gray-300 px-4 py-2">Precio por unidad</th>
-      <th class="border border-gray-300 px-4 py-2">Precio</th>
+      <th>Cantidad</th>
+      <th>Producto</th>
+      <th>Precio por unidad</th>
+      <th>Total</th>
+      <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let carrito of carritos" class="hover:bg-gray-100 transition-all">
-<!--      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.cantidad }}</td>-->
-      <td class="border border-gray-300 px-4 py-2 text-center">
-        <div class="flex items-center justify-center space-x-2">
-          <button class="bg-gray-200 px-2 rounded" (click)="decrementQuantity(carrito)">-</button>
-          <input type="number" min="1" [(ngModel)]="carrito.cantidad"
-                 (ngModelChange)="updateQuantity(carrito)"
-                 class="w-16 text-center border rounded" />
-          <button class="bg-gray-200 px-2 rounded" (click)="incrementQuantity(carrito)">+</button>
-        </div>
+    <tr *ngFor="let carrito of carritos; let i = index">
+      <td>
+        <input type="number" [(ngModel)]="carritos[i].cantidad" (ngModelChange)="calcularTotal()" min="1" class="w-12 text-center">
       </td>
-
-      <!--      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id }}</td>-->
-<!--      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id_carrito }}</td>-->
-<!--      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id_producto }}</td>-->
-<!--      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.id_usuario }}</td>-->
-      <td class="border border-gray-300 px-4 py-2 text-center">{{ carrito.nombre }}</td>
-      <td class="border border-gray-300 px-4 py-2 text-center font-semibold">{{ carrito.precio }} €</td>
-      <td class="border border-gray-300 px-4 py-2 text-center font-semibold">{{ (carrito.precio * carrito.cantidad).toFixed(2) }} €</td>
-      <td class="border border-gray-300 px-4 py-2 text-center">
-        <button class="bg-red-500 text-white py-2 px-4 rounded" (click)="eliminarProducto(carrito.id_producto)">
-          Eliminar
-        </button>
-
-
-        <!--        <button class="bg-red-500 text-white py-2 px-4 rounded">-->
-<!--          Eliminar-->
-<!--        </button>-->
+      <td>{{ carrito.nombre }}</td>
+      <td>{{ carrito.precio }} €</td>
+      <td>{{ (carrito.precio * carrito.cantidad).toFixed(2) }} €</td>
+      <td>
+        <button (click)="eliminarProducto(carrito.id)" class="bg-red-500 text-white py-1 px-2 rounded">Eliminar</button>
       </td>
     </tr>
     </tbody>
   </table>
-  <br>
-  <div class="flex justify-end mt-4">
-    <div class="bg-gray-100 p-4 rounded-lg shadow-lg inline-block">
-      <span class="text-lg font-semibold">Total del Carrito:</span>
-      <span class="text-2xl font-bold ml-2">{{ total.toFixed(2) }} €</span>
-    </div>
+
+  <div class="mt-4 text-right">
+    <strong>Total: {{ total.toFixed(2) }} €</strong>
   </div>
-  <br>
-  <div class="flex justify-center">
-    <button (click)="modalPago.open()" class="bg-yellow-300 text-black py-4 px-8 rounded-lg text-xl font-bold">
-      Comprar
-    </button>
+
+  <div class="mt-4 text-center">
+    <button (click)="comprar()" class="bg-yellow-500 text-black py-2 px-4 rounded">Comprar</button>
   </div>
-  <app-modal-pago #modalPago [carritos]="carritos"></app-modal-pago>
 </div>
-<div style="margin-left: 32%; padding-bottom: 200px;">
-  <img src="/tarjetaImagen.png" alt="tarjeta">
-</div>
-</body>
