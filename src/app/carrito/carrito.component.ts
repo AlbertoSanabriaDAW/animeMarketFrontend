@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarritoModelo } from '../modelos/carrito.modelo';
 import {ModalPagoComponent} from '../componentes/modal-pago/modal-pago.component';
 import {FormsModule} from '@angular/forms';
-import {NgForOf} from '@angular/common';
+import {CurrencyPipe, DecimalPipe, NgForOf, NgIf} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -11,10 +12,14 @@ import {NgForOf} from '@angular/common';
   imports: [
     ModalPagoComponent,
     FormsModule,
-    NgForOf
+    NgForOf,
+    NgIf,
+    CurrencyPipe,
+    DecimalPipe
   ]
 })
 export class CarritoComponent implements OnInit {
+  constructor(private router: Router) {}
   carritos: CarritoModelo[] = [];
   total: number = 0;
   mostrarModalPago = false;
@@ -60,5 +65,12 @@ export class CarritoComponent implements OnInit {
     this.calcularTotal();
   }
 
+  navigateTo(path: string): void {
+    this.router.navigate(['/' + path]).then(success => {
+      if (!success) {
+        console.error(`Navegación a ${path} fallida.`);
+      }
+    });
+  }
 
 }

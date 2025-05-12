@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
+  imports: [
+    NgClass
+  ],
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
