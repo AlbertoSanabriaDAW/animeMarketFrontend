@@ -5,4 +5,6 @@ export interface ProductoModelo {
   precio: number;
   imagen: string;
   id_tematica: number;
+  valoraciones: number;
+  numeroValoraciones: number;
 }

@@ -1,3 +1,4 @@
+
 <div class="detalle-producto-container"
      style="
        max-width: 600px;
@@ -47,26 +48,142 @@
     >
   </div>
 
-  <!-- Botón más profesional -->
+  <!-- Botón Añadir al carrito -->
   <button
-  (click)="anyadirCantidad()"
-  class="btn mt-3"
-  style="
-    display: block;
-    margin: 20px auto 0;
-    padding: 14px 28px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    background-color: #6c757d; /* gris */
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease;
-  "
-  onmouseover="this.style.backgroundColor='#dc3545'"
-  onmouseout="this.style.backgroundColor='#6c757d'"
+    (click)="anyadirCantidad()"
+    class="btn mt-3"
+    style="
+      display: block;
+      margin: 20px auto 0;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease;
+    "
+    onmouseover="this.style.backgroundColor='#dc3545'"
+    onmouseout="this.style.backgroundColor='#6c757d'"
   >
-  Añadir al carrito
+    Añadir al carrito
   </button>
 
 </div>
+
+<!-- ✅ Mensaje de confirmación fuera del contenedor principal -->
+<div *ngIf="mostrarMensaje" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInOut 3s ease forwards;
+">
+  {{ producto.nombre }} ha sido agregado al carrito.
+</div>
+
+<style>
+  @keyframes fadeInOut {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    10%  { opacity: 1; transform: translateY(0); }
+    90%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px); }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="detalle-producto-container"-->
+<!--     style="-->
+<!--       max-width: 600px;-->
+<!--       margin: 20px auto;-->
+<!--       padding: 20px;-->
+<!--       border: 1px solid #ddd;-->
+<!--       border-radius: 8px;-->
+<!--       box-shadow: 0 2px 8px rgba(0,0,0,0.1);-->
+<!--       background-color: #fff;-->
+<!--     ">-->
+
+<!--  &lt;!&ndash; Título centrado &ndash;&gt;-->
+<!--  <h2 style="text-align: center; margin-bottom: 20px;">-->
+<!--    {{ producto.nombre }}-->
+<!--  </h2>-->
+
+<!--  &lt;!&ndash; Imagen centrada y con un borde ligero &ndash;&gt;-->
+<!--  <img-->
+<!--    [src]="producto.imagen"-->
+<!--    [alt]="producto.nombre"-->
+<!--    class="img-fluid"-->
+<!--    style="-->
+<!--      display: block;-->
+<!--      margin: 0 auto;-->
+<!--      max-width: 100%;-->
+<!--      height: auto;-->
+<!--      border: 1px solid #eee;-->
+<!--      border-radius: 4px;-->
+<!--      padding: 5px;-->
+<!--    "-->
+<!--  >-->
+
+<!--  &lt;!&ndash; Descripción y precio &ndash;&gt;-->
+<!--  <p style="margin-top: 10px;">{{ producto.descripcion }}</p>-->
+<!--  <p><strong>Precio:</strong> {{ producto.precio }} €</p>-->
+
+<!--  &lt;!&ndash; Contenedor de la cantidad &ndash;&gt;-->
+<!--  <div class="cantidad-container" style="margin-top: 15px;">-->
+<!--    <label for="cantidad" style="margin-right: 10px;"><strong>Cantidad:</strong></label>-->
+<!--    <input-->
+<!--      id="cantidad"-->
+<!--      type="number"-->
+<!--      [(ngModel)]="cantidad"-->
+<!--      min="1"-->
+<!--      class="form-control d-inline-block"-->
+<!--      style="width: 80px;"-->
+<!--    >-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Botón más profesional &ndash;&gt;-->
+<!--  <button-->
+<!--  (click)="anyadirCantidad()"-->
+<!--  class="btn mt-3"-->
+<!--  style="-->
+<!--    display: block;-->
+<!--    margin: 20px auto 0;-->
+<!--    padding: 14px 28px;-->
+<!--    font-size: 1.1rem;-->
+<!--    font-weight: bold;-->
+<!--    border-radius: 6px;-->
+<!--    background-color: #6c757d; /* gris */-->
+<!--    color: white;-->
+<!--    border: none;-->
+<!--    transition: background-color 0.3s ease;-->
+<!--  "-->
+<!--  onmouseover="this.style.backgroundColor='#dc3545'"-->
+<!--  onmouseout="this.style.backgroundColor='#3093ec'"-->
+<!--  >-->
+<!--  Añadir al carrito-->
+<!--    -->
+<!--    -->
+<!--  </button>-->
+<!--  -->
+<!--  -->
+
+<!--</div>-->

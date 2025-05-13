@@ -78,7 +78,7 @@ export class CrearProductoComponent {
   constructor(private http: HttpClient) {}
 
   crearProducto() {
-    const url = '/create';  // Ajustar la URL según la ruta definida en el backend
+    const url = '/api/productos/create';
     const headers = { 'Content-Type': 'application/json' };
 
     this.http.post(url, JSON.stringify(this.producto), { headers })
@@ -108,13 +108,16 @@ export class CrearProductoComponent {
   }
 }
 
-//   PRODUCTO MODELO EJEMPLO
-//   producto: ProductoModelo = {
-//     id: 1500,
-//     nombre: 'NuevoProducto_1',
-//     descripcion: 'Este es un producto nuevo',
-//     precio: 1,
-//     imagen: 'IproductoNuevo.png',
-//     id_tematica: 1
-//   };
+// ----------------------------------------------------------
 
+// producto = {
+//   nombre: 'NuevoProducto_1',
+//   descripcion: 'Este es un producto nuevo',
+//   precio: 1,
+//   imagen: 'IproductoNuevo.png',
+//   id_tematica: 1
+// };
+
+// const url = '/api/productos/create';
+
+// -------------------------------------------------------------
