@@ -25,7 +25,7 @@ export class CrearProductoComponent {
     descripcion: 'Este es un producto nuevo',
     precio: 1,
     imagen: 'IproductoNuevo.png',
-    id_tematicas: 1,
+    id_tematica: 1,
     valoraciones: 0,
     numeroValoraciones: 0,
     };
@@ -33,7 +33,8 @@ export class CrearProductoComponent {
   constructor(private http: HttpClient) {}
 
   crearProducto() {
-    const url = '/api/productos/create?XDEBUG_SESSION_START=19561';
+    //const url = '/api/productos/create?XDEBUG_SESSION_START=19561';
+    const url = '/api/productos/create';
 
     this.http.post(url, this.producto)
       .pipe(
