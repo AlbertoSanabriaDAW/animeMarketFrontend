@@ -1,5 +1,6 @@
 <!-- src/app/miscompras/miscompras.component.html -->
-<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">
+<!--<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">-->
+<body class="bg-gray-500 w-full">
 <div class="p-10 w-full">
   <h1 class="text-3xl font-bold mb-6 text-center text-white">Mis Compras</h1>
 
@@ -24,16 +25,60 @@
       <tbody>
       <tr *ngFor="let prod of compra.lista_productos" class="hover:bg-gray-50">
         <td class="border px-4 py-2">{{ prod.nombre }}</td>
-        <td class="border px-4 py-2 text-center">{{ prod.cantidad }}</td>
-        <td class="border px-4 py-2 text-center">{{ prod.precio.toFixed(2) }} €</td>
-        <td class="border px-4 py-2 text-center">{{ (prod.precio * prod.cantidad).toFixed(2) }} €</td>
+        <td class="border px-4 py-2 text-center">{{ prod.cantidad ?? 0 }}</td>
+        <td class="border px-4 py-2 text-center">{{ prod.precio ? (prod.precio | number:'1.2-2') : '0.00' }} €</td>
+        <td class="border px-4 py-2 text-center">{{ prod.precio && prod.cantidad ? (prod.precio * prod.cantidad | number:'1.2-2') : '0.00' }} €</td>
       </tr>
       </tbody>
     </table>
 
     <div class="text-right text-lg font-semibold">
-      Total: <span class="text-green-600">{{ compra.precio.toFixed(2) }} €</span>
+      Total: <span class="text-green-600">{{ compra.precio_total ? (compra.precio_total | number:'1.2-2') : '0.00' }} €</span>
     </div>
   </div>
 </div>
 </body>
+
+
+
+
+
+<!--&lt;!&ndash; src/app/miscompras/miscompras.component.html &ndash;&gt;-->
+<!--<body class="bg-[url('/fondoPaginaAnime2.jpg')] bg-no-repeat bg-fixed w-full">-->
+<!--<div class="p-10 w-full">-->
+<!--  <h1 class="text-3xl font-bold mb-6 text-center text-white">Mis Compras</h1>-->
+
+<!--  <div *ngIf="compras.length === 0" class="text-white text-center text-lg">-->
+<!--    No hay compras registradas.-->
+<!--  </div>-->
+
+<!--  <div *ngFor="let compra of compras" class="bg-white rounded-lg shadow-md p-6 mb-8">-->
+<!--    <div class="flex justify-between items-center mb-4">-->
+<!--      <h2 class="text-xl font-bold">Carrito #{{ compra.id_carrito }}</h2>-->
+<!--    </div>-->
+
+<!--    <table class="w-full border-collapse border border-gray-300 mb-4">-->
+<!--      <thead class="bg-gray-100">-->
+<!--      <tr>-->
+<!--        <th class="border px-4 py-2 text-left">Producto</th>-->
+<!--        <th class="border px-4 py-2 text-center">Cantidad</th>-->
+<!--        <th class="border px-4 py-2 text-center">Precio Unitario</th>-->
+<!--        <th class="border px-4 py-2 text-center">Subtotal</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let prod of compra.lista_productos" class="hover:bg-gray-50">-->
+<!--        <td class="border px-4 py-2">{{ prod.nombre }}</td>-->
+<!--        <td class="border px-4 py-2 text-center">{{ prod.cantidad }}</td>-->
+<!--        <td class="border px-4 py-2 text-center">{{ prod.precio.toFixed(2) }} €</td>-->
+<!--        <td class="border px-4 py-2 text-center">{{ (prod.precio * prod.cantidad).toFixed(2) }} €</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+
+<!--    <div class="text-right text-lg font-semibold">-->
+<!--      Total: <span class="text-green-600">{{ compra.precio.toFixed(2) }} €</span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</body>-->

@@ -5,9 +5,7 @@ export interface miscomprasModelo {
     nombre: string;
     cantidad: number;
     precio: number;
+    subtotal: number;
   }[];
-  precio: number;
+  precio_total: number; // ✅ este campo debe existir
 }
-
-
-

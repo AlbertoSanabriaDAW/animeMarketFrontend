@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MiscomprasService } from '../services/miscompras.service';
 import { miscomprasModelo } from '../modelos/miscompras.modelo';
-import { NgForOf, NgIf } from '@angular/common';
+import {DecimalPipe, NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-miscompras',
   templateUrl: './miscompras.component.html',
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    DecimalPipe
   ],
   styleUrls: ['./miscompras.component.css']
 })
@@ -42,40 +43,3 @@ export class MiscomprasComponent implements OnInit {
     });
   }
 }
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { MiscomprasService } from '../services/miscompras.service';
-// import { miscomprasModelo } from '../modelos/miscompras.modelo';
-// import {NgForOf, NgIf} from '@angular/common';
-//
-// @Component({
-//   selector: 'app-miscompras',
-//   templateUrl: './miscompras.component.html',
-//   imports: [
-//     NgIf,
-//     NgForOf
-//   ],
-//   styleUrls: ['./miscompras.component.css']
-// })
-// export class MiscomprasComponent implements OnInit {
-//   compras: miscomprasModelo[] = [];
-//
-//   constructor(private miscomprasService: MiscomprasService) {}
-//
-//   ngOnInit(): void {
-//     this.obtenerMisCompras();
-//   }
-//
-//   obtenerMisCompras(): void {
-//     this.miscomprasService.obtenerCompras().subscribe({
-//       next: (data) => {
-//         console.log('Compras cargadas: ', data);
-//         this.compras = data;
-//       },
-//       error: (err) => {
-//         console.error('❌ Error al cargar las compras: ', err);
-//       }
-//     });
-//   }
-// }
