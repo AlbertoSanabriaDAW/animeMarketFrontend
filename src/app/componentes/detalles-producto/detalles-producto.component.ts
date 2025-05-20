@@ -13,7 +13,7 @@ import {NgIf} from '@angular/common';
     FormsModule,
     NgIf
   ],
-  styleUrls: ['./detalles-producto.component.css']
+  //styleUrls: ['./detalles-producto.component.css']
 })
 export class DetallesProductoComponent implements OnInit {
 

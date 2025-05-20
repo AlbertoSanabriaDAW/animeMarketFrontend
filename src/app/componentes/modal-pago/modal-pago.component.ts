@@ -10,7 +10,7 @@ import {NgForOf, NgIf} from '@angular/common';
     NgForOf,
     NgIf
   ],
-  styleUrls: ['./modal-pago.component.css']
+  //styleUrls: ['./modal-pago.component.css']
 })
 export class ModalPagoComponent {
 
