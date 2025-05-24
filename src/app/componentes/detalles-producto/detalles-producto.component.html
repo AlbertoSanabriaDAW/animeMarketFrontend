@@ -48,6 +48,58 @@
     >
   </div>
 
+  <div>
+    <p>Reseñas del Producto</p>
+
+    @if (resenias.length > 0) {
+      <p style="margin-top: 10px; color: #555;">
+        Media de valoraciones: {{ mediaCalificaciones }} estrellas
+      </p>
+    }
+
+    <div *ngIf="resenias.length === 0" style="margin-top: 10px; color: #888;">
+      No hay reseñas para este producto.
+    </div>
+
+    <div *ngFor="let resenia of resenias" class="resenia-item" style="margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+      <p><strong>Valoración:</strong> {{ resenia.calificacion }} estrellas</p>
+      <p><strong>{{ resenia.nombre_usuario }}:</strong> {{ resenia.comentario }}</p>
+    </div>
+
+  </div>
+
+  <div>
+    <p>Agregar Reseña</p>
+
+    <form (ngSubmit)="agregarResenia()" #reseniaForm="ngForm" style="margin-top: 10px;">
+      <div class="form-group">
+        <label for="calificacion">Valoración:</label>
+        <select
+          id="calificacion"
+          [(ngModel)]="nuevaResenia.calificacion"
+          name="calificacion"
+          class="form-control"
+          required
+        >
+          <option value="" disabled selected>Seleccione una valoración</option>
+          <option *ngFor="let valor of [1, 2, 3, 4, 5]" [value]="valor">{{ valor }} estrellas</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="comentario">Comentario:</label>
+        <textarea
+          id="comentario"
+          [(ngModel)]="nuevaResenia.comentario"
+          name="comentario"
+          class="form-control"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+    </form>
+  </div>
+
   <!-- Botón Añadir al carrito -->
   <button
     (click)="anyadirCantidad()"

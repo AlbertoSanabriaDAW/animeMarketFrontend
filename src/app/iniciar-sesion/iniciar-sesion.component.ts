@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import {NgIf} from '@angular/common';
+import {lastValueFrom} from 'rxjs';
+import {UsuariosService} from '../services/usuariosService';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -37,7 +39,7 @@ export class IniciarSesionComponent {
     const { nick, contrasenia } = this.iniciarSesionForm.value;
 
     this.authService.login(nick, contrasenia).subscribe({
-      next: (response) => {
+      next: async (response) => {
         console.log('Login exitoso:', response);
         localStorage.setItem('token', response.token); // Guardar JWT en LocalStorage
         this.router.navigate(['/dashboard']); // Redirigir después del login

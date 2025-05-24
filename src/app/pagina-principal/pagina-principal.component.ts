@@ -5,8 +5,12 @@ import { CarritoService } from '../services/carrito.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetallesProductoComponent } from '../componentes/detalles-producto/detalles-producto.component';
 import { CrearProductoComponent } from '../componentes/crear-producto/crear-producto.component';
-import {CurrencyPipe, NgForOf} from '@angular/common';
+import {CurrencyPipe, NgForOf, NgIf} from '@angular/common';
 import {CarritoModelo} from '../modelos/carrito.modelo';
+import {lastValueFrom, Observable} from 'rxjs';
+import {UsuariosService} from '../services/usuariosService';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ReseniasModelo} from '../modelos/resenias.modelo';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -14,23 +18,38 @@ import {CarritoModelo} from '../modelos/carrito.modelo';
   imports: [
     CrearProductoComponent,
     NgForOf,
-    CurrencyPipe
+    CurrencyPipe,
+    NgIf
   ],
   styleUrls: ['./pagina-principal.component.css']
 })
 export class PaginaPrincipalComponent implements OnInit {
 
+  rolUsuario: number = 0; // 0: Usuario, 1: Administrador
   productos: ProductoModelo[] = [];
   mostrarCrearProducto: boolean = false;
 
   constructor(
     private productosService: ProductoService,
     private carritoService: CarritoService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private usuariosService: UsuariosService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
     this.cargarProductos();
+    this.cargarRolUsuario();
+  }
+
+  async cargarRolUsuario() {
+    const detallesDelUsuario: any = await lastValueFrom(this.usuariosService.obtenerDetallesUsuario());
+
+    localStorage.setItem('nick', detallesDelUsuario.nick);
+    localStorage.setItem('rol', detallesDelUsuario.rol);
+
+    // Verifica el rol del usuario
+    this.rolUsuario = Number(localStorage.getItem('rol')) ?? 0;
   }
 
   cargarProductos() {
@@ -77,6 +96,33 @@ export class PaginaPrincipalComponent implements OnInit {
   }
 
 
+  eliminarProducto(producto: ProductoModelo) {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('No hay token en localStorage');
+      return;
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const url = `/api/productos/eliminar/${producto.id}`;
+
+    console.log(`Eliminando producto con ID: ${producto.id}`);
+
+    this.http.delete(url, { headers }).subscribe({
+      next: (response) => {
+        console.log('Producto eliminado exitosamente:', response);
+        this.cargarProductos(); // Recargar productos después de eliminar uno
+      },
+      error: (error) => {
+        console.error('Error al eliminar producto:', error);
+      }
+    })
+  }
 }
 
 

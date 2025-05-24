@@ -108,7 +108,7 @@
   <div class="text-center mb-4">
     <h1 class="titulo">🎉 ¡Bienvenido a AnimeMarket! 🎉</h1>
     <p class="descripcion">Tu tienda definitiva de productos de tus animes favoritos: <strong>Bobobo, Kimetsu no Yaiba, Doraemon, Pokémon y Dragon Ball.</strong><br>Encuentra figuras, ropa, peluches, accesorios y mucho más.</p>
-    <button (click)="abrirCrearProducto()" class="boton-crear-producto">Añadir Nuevo Producto</button>
+    <button *ngIf="rolUsuario === 1" (click)="abrirCrearProducto()" class="boton-crear-producto">Añadir Nuevo Producto</button>
   </div>
 
   <app-crear-producto
@@ -130,6 +130,7 @@
           </div>
           <div class="text-center">
             <button (click)="mostrarDetalles(producto)" class="btn-ver-detalles">Ver Detalles</button>
+            <button *ngIf="rolUsuario === 1" (click)="eliminarProducto(producto)" class="btn-ver-detalles">Eliminar</button>
           </div>
         </div>
       </div>

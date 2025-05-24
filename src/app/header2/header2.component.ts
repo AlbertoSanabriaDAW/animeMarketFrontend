@@ -26,7 +26,7 @@ export class Header2Component implements OnInit {
   }
 
   getUsername(): string {
-    return localStorage.getItem('username') || 'Usuario';
+    return localStorage.getItem('nick') || 'Usuario';
   }
 
   login(): void {

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 // import {RegistroUsuario} from '../modelos/usuario.modelo';
 // import {ProductoModelo} from '../modelos/producto.modelo';
@@ -33,5 +33,24 @@ export class UsuariosService {
   // getProductos(): Observable<ProductoModelo[]> {
   //   return this.http.get<ProductoModelo[]>(`${this.apiUrl}/productos/all`);
   // }
+
+  obtenerDetallesUsuario() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      console.error('No hay token en localStorage');
+      return new Observable(observer => observer.error('No autenticado'));
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const url = `/api/usuarios/detalles`;
+
+    return this.http.get(url, { headers });
+  }
+
 
 }
