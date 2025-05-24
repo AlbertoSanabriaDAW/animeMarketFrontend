@@ -9,3 +9,6 @@ export interface miscomprasModelo {
   }[];
   precio_total: number;
 }
+
+
+
