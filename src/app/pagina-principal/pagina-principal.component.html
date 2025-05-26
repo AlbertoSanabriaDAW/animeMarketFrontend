@@ -130,7 +130,8 @@
           </div>
           <div class="text-center">
             <button (click)="mostrarDetalles(producto)" class="btn-ver-detalles">Ver Detalles</button>
-            <button *ngIf="rolUsuario === 1" (click)="eliminarProducto(producto)" class="btn-ver-detalles">Eliminar</button>
+
+            <button *ngIf="rolUsuario === 1" (click)="eliminarProducto(producto)" class="btn-ver-detalles" style="margin-left: 10px;">Eliminar</button>
           </div>
         </div>
       </div>

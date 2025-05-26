@@ -11,10 +11,9 @@
      ">
 
   <!-- Título centrado -->
-  <h2 style="text-align: center; margin-bottom: 20px;">
+  <h2 style="text-align: center; margin-bottom: 20px; font-family: sans-serif; font-weight: bold;">
     {{ producto.nombre }}
   </h2>
-
   <!-- Imagen centrada y con un borde ligero -->
   <img
     [src]="producto.imagen"
@@ -31,29 +30,26 @@
     "
   >
 
-  <!-- Descripción y precio -->
-  <p style="margin-top: 10px;">{{ producto.descripcion }}</p>
-  <p><strong>Precio:</strong> {{ producto.precio }} €</p>
+  <!-- Descripción -->
+  <p style="margin-top: 15px; font-size: 22px; color: #999999; line-height: 1.6; font-weight: 400; padding: 12px; background-color: #1a1a1a; border-left: 4px solid #ff4d4f; border-radius: 6px;">
+    {{ producto.descripcion }}
+  </p>
 
-  <!-- Contenedor de la cantidad -->
-  <div class="cantidad-container" style="margin-top: 15px;">
-    <label for="cantidad" style="margin-right: 10px;"><strong>Cantidad:</strong></label>
-    <input
-      id="cantidad"
-      type="number"
-      [(ngModel)]="cantidad"
-      min="1"
-      class="form-control d-inline-block"
-      style="width: 80px;"
-    >
-  </div>
+  <!-- Precio -->
+  <p style="font-size: 20px; font-weight: bold; color:  #e63946; margin-top: 12px;">
+    Precio: <span style="color: #999999;">{{ producto.precio }} €</span>
+  </p>
+
+
 
   <div>
-    <p>Reseñas del Producto</p>
+    <p style="font-size: 20px; color: #e63946; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">
+      Reseñas del producto
+    </p>
 
     @if (resenias.length > 0) {
-      <p style="margin-top: 10px; color: #555;">
-        Media de valoraciones: {{ mediaCalificaciones }} estrellas
+      <p style="margin-top: 15px; color: #e67e22; font-size: 18px; font-weight: bold;">
+        ⭐ Media de valoraciones: {{ mediaCalificaciones }} estrellas
       </p>
     }
 
@@ -69,7 +65,9 @@
   </div>
 
   <div>
-    <p>Agregar Reseña</p>
+    <p style="font-size: 20px; color: #e63946; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">
+      Agregar Reseña
+    </p>
 
     <form (ngSubmit)="agregarResenia()" #reseniaForm="ngForm" style="margin-top: 10px;">
       <div class="form-group">
@@ -96,8 +94,33 @@
           required
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+<!--      <button type="submit" class="btn btn-primary">Enviar Reseña</button>-->
+      <button type="submit" style="
+          background-color: #e67e22;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          font-size: 16px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        " onmouseover="this.style.backgroundColor='#d35400'" onmouseout="this.style.backgroundColor='#e67e22'">
+                Enviar Reseña
+      </button>
     </form>
+  </div>
+
+  <!-- Contenedor de la cantidad -->
+  <div class="cantidad-container" style="margin-top: 15px;">
+    <label for="cantidad" style="margin-right: 10px;"><strong>Cantidad:</strong></label>
+    <input
+      id="cantidad"
+      type="number"
+      [(ngModel)]="cantidad"
+      min="1"
+      class="form-control d-inline-block"
+      style="width: 80px;"
+    >
   </div>
 
   <!-- Botón Añadir al carrito -->
